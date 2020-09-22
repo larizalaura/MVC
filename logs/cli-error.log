@@ -1,0 +1,7 @@
+2020-09-16 19:09:38 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in /var/www/html/creche/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/creche/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration')
+#1 /var/www/html/creche/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
