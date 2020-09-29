@@ -138,3 +138,117 @@ Cake\Console\CommandRunner::run() - CORE/src/Console/CommandRunner.php, line 162
 
 
 
+2020-09-22 22:36:15 Error: [InvalidArgumentException] Could not find class "CreateFuncionario" in file "/var/www/html/MVC/config/Migrations/20200922161000_CreateFuncionario.php" in /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php on line 741
+Stack Trace:
+#0 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(441): Phinx\Migration\Manager->getMigrations('default')
+#1 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Console/Command/Rollback.php(130): Phinx\Migration\Manager->rollback('default', NULL, false, true, false)
+#2 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/CommandTrait.php(35): Phinx\Console\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/Rollback.php(68): Migrations\Command\Rollback->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /var/www/html/MVC/vendor/symfony/console/Command/Command.php(255): Migrations\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /var/www/html/MVC/vendor/symfony/console/Application.php(969): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /var/www/html/MVC/vendor/symfony/console/Application.php(255): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Rollback), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /var/www/html/MVC/vendor/symfony/console/Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'rollback')
+#10 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#11 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#12 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#13 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#14 {main}
+
+
+2020-09-28 20:08:04 Error: [Error] Call to undefined method CreateUsuario::checkDrop() in /var/www/html/MVC/config/Migrations/20200922153000_CreateUsuario.php on line 31
+Stack Trace:
+#0 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager/Environment.php(128): CreateUsuario->down()
+#1 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(387): Phinx\Migration\Manager\Environment->executeMigration(Object(CreateUsuario), 'down', false)
+#2 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(529): Phinx\Migration\Manager->executeMigration('default', Object(CreateUsuario), 'down', false)
+#3 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Console/Command/Rollback.php(130): Phinx\Migration\Manager->rollback('default', 0, false, true, false)
+#4 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/CommandTrait.php(35): Phinx\Console\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/Rollback.php(68): Migrations\Command\Rollback->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /var/www/html/MVC/vendor/symfony/console/Command/Command.php(255): Migrations\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /var/www/html/MVC/vendor/symfony/console/Application.php(969): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /var/www/html/MVC/vendor/symfony/console/Application.php(255): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Rollback), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /var/www/html/MVC/vendor/symfony/console/Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'rollback')
+#12 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#13 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#14 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#15 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2020-09-28 20:09:53 Error: [InvalidArgumentException] Cannot use an empty table name in /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Table/Table.php on line 25
+Stack Trace:
+#0 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Table.php(85): Phinx\Db\Table\Table->__construct(NULL, Array)
+#1 /var/www/html/MVC/vendor/cakephp/migrations/src/AbstractMigration.php(42): Phinx\Db\Table->__construct(NULL, Array, Object(Migrations\CakeAdapter))
+#2 /var/www/html/MVC/config/Migrations/20200922153000_CreateUsuario.php(30): Migrations\AbstractMigration->table(NULL)
+#3 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager/Environment.php(128): CreateUsuario->down()
+#4 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(387): Phinx\Migration\Manager\Environment->executeMigration(Object(CreateUsuario), 'down', false)
+#5 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(529): Phinx\Migration\Manager->executeMigration('default', Object(CreateUsuario), 'down', false)
+#6 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Console/Command/Rollback.php(130): Phinx\Migration\Manager->rollback('default', 0, false, true, false)
+#7 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/CommandTrait.php(35): Phinx\Console\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/Rollback.php(68): Migrations\Command\Rollback->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /var/www/html/MVC/vendor/symfony/console/Command/Command.php(255): Migrations\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /var/www/html/MVC/vendor/symfony/console/Application.php(969): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /var/www/html/MVC/vendor/symfony/console/Application.php(255): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Rollback), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /var/www/html/MVC/vendor/symfony/console/Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'rollback')
+#15 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#16 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#17 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#18 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#19 {main}
+
+
+2020-09-28 20:10:23 Error: [InvalidArgumentException] Cannot use an empty table name in /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Table/Table.php on line 25
+Stack Trace:
+#0 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Table.php(85): Phinx\Db\Table\Table->__construct(NULL, Array)
+#1 /var/www/html/MVC/vendor/cakephp/migrations/src/AbstractMigration.php(42): Phinx\Db\Table->__construct(NULL, Array, Object(Migrations\CakeAdapter))
+#2 /var/www/html/MVC/config/Migrations/20200922153000_CreateUsuario.php(30): Migrations\AbstractMigration->table(NULL)
+#3 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager/Environment.php(128): CreateUsuario->down()
+#4 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(387): Phinx\Migration\Manager\Environment->executeMigration(Object(CreateUsuario), 'down', false)
+#5 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(529): Phinx\Migration\Manager->executeMigration('default', Object(CreateUsuario), 'down', false)
+#6 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Console/Command/Rollback.php(130): Phinx\Migration\Manager->rollback('default', 0, false, true, false)
+#7 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/CommandTrait.php(35): Phinx\Console\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/Rollback.php(68): Migrations\Command\Rollback->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /var/www/html/MVC/vendor/symfony/console/Command/Command.php(255): Migrations\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /var/www/html/MVC/vendor/symfony/console/Application.php(969): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /var/www/html/MVC/vendor/symfony/console/Application.php(255): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Rollback), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /var/www/html/MVC/vendor/symfony/console/Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'rollback')
+#15 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#16 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#17 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#18 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#19 {main}
+
+
+2020-09-28 20:11:16 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'creche.Array' doesn't exist in /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php on line 167
+Stack Trace:
+#0 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php(167): PDO->exec('ALTER TABLE Arr...')
+#1 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/AdapterWrapper.php(169): Phinx\Db\Adapter\PdoAdapter->execute('ALTER TABLE Arr...')
+#2 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/AdapterWrapper.php(169): Phinx\Db\Adapter\AdapterWrapper->execute('ALTER TABLE Arr...')
+#3 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/AbstractMigration.php(230): Phinx\Db\Adapter\AdapterWrapper->execute('ALTER TABLE Arr...')
+#4 /var/www/html/MVC/config/Migrations/20200922153000_CreateUsuario.php(31): Phinx\Migration\AbstractMigration->execute('ALTER TABLE Arr...')
+#5 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager/Environment.php(128): CreateUsuario->down()
+#6 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(387): Phinx\Migration\Manager\Environment->executeMigration(Object(CreateUsuario), 'down', false)
+#7 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Migration/Manager.php(529): Phinx\Migration\Manager->executeMigration('default', Object(CreateUsuario), 'down', false)
+#8 /var/www/html/MVC/vendor/robmorgan/phinx/src/Phinx/Console/Command/Rollback.php(130): Phinx\Migration\Manager->rollback('default', 0, false, true, false)
+#9 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/CommandTrait.php(35): Phinx\Console\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /var/www/html/MVC/vendor/cakephp/migrations/src/Command/Rollback.php(68): Migrations\Command\Rollback->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /var/www/html/MVC/vendor/symfony/console/Command/Command.php(255): Migrations\Command\Rollback->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /var/www/html/MVC/vendor/symfony/console/Application.php(969): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /var/www/html/MVC/vendor/symfony/console/Application.php(255): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Rollback), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /var/www/html/MVC/vendor/symfony/console/Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'rollback')
+#17 /var/www/html/MVC/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#18 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#19 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#20 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#21 {main}
+
+
