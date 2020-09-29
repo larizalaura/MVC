@@ -48,9 +48,9 @@ class UsuariosFixture extends TestFixture
                 'senha' => 'Lorem ipsum dolor sit amet',
                 'ativo' => 1,
                 'admin' => 1,
-                'data_criacao' => '2020-09-23 18:05:11',
-                'data_modificacao' => '2020-09-23 18:05:11',
-                'data_delecao' => '2020-09-23 18:05:11'
+                'data_criacao' => '2020-09-24 00:28:45',
+                'data_modificacao' => '2020-09-24 00:28:45',
+                'data_delecao' => '2020-09-24 00:28:45'
             ],
         ];
         parent::init();

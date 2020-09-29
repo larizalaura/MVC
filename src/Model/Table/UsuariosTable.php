@@ -51,31 +51,39 @@ class UsuariosTable extends Table
             ->scalar('nome')
             ->maxLength('nome', 100)
             ->requirePresence('nome', 'create');
+           // ->notEmptyString('nome');
 
         $validator
             ->scalar('usuario')
             ->maxLength('usuario', 50)
             ->requirePresence('usuario', 'create');
+           // ->notEmptyString('usuario');
 
         $validator
             ->scalar('senha')
             ->maxLength('senha', 60)
             ->requirePresence('senha', 'create');
+            //->notEmptyString('senha');
 
         $validator
             ->boolean('ativo');
+           // ->notEmptyString('ativo');
 
         $validator
             ->boolean('admin');
+           // ->notEmptyString('admin');
 
         $validator
             ->dateTime('data_criacao');
-        $validator
-            ->dateTime('data_modificacao');
+           // ->notEmptyDateTime('data_criacao');
 
         $validator
-            ->dateTime('data_delecao')
-            ->allowEmptyDateTime('data_delecao');
+            ->dateTime('data_modificacao');
+          //  ->notEmptyDateTime('data_modificacao');
+
+        $validator
+            ->dateTime('data_delecao');
+            //->allowEmptyDateTime('data_delecao');
 
         return $validator;
     }
