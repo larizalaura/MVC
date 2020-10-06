@@ -6,6 +6,7 @@ use App\Controller\AppController;
 /**
  * Usuarios Controller
  *
+ * @property \App\Model\Table\UsuariosTable $Usuarios
  *
  * @method \App\Model\Entity\Usuario[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */

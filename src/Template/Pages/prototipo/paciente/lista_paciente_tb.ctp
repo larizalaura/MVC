@@ -46,7 +46,7 @@
                     <?= $this->Form->create('busca',['align' => 'inline','type'=>'get']);  ?>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Nome do Paciente</label>
+                            <label>Nome do Aluno</label>
                             <?= $this->Form->input ('nome_paciente',['type'=>'select','id'=>'nome-paciente','options'=>['Paciente 1','Paciente 2', 'Paciente 3', 'Paciente 4', 'Paciente 5', 'Paciente 6', 'Paciente 7', 'Paciente 8', 'Paciente 9', 'Paciente 10', 'Paciente 11', 'Paciente 12'],'empty'=>'-']); ?>
                         </div>
                     </div>
