@@ -22,7 +22,7 @@ class CreateAlunos extends AbstractMigration
         $matricula = $this->table('matriculas');
         $matricula
             ->addColumn('matricula_ativa', 'boolean')
-            ->addColumn('aluno_id', 'integer', ['limit'=>50])
+            ->addColumn('aluno_id', 'integer', ['limit'=>10])
             ->addForeignKey('aluno_id', 'alunos', 'id')
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
@@ -44,19 +44,19 @@ class CreateAlunos extends AbstractMigration
 
         $matriculado = $this->table('matriculados');
         $matriculado   
-            ->addColumn('matricula_id', 'integer', ['limit'=>50])
-            ->addColumn('turmas_id', 'string', ['limit'=>50])
-            ->addForeignKey('matricula_id', 'matriculas', 'id')
-            ->addForeignKey('turmas_id', 'turmas', 'id')
+            ->addColumn('matricula_id', 'integer', ['limit'=>10])
+            ->addColumn('turmas_id', 'integer', ['limit'=>10])
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
+            ->addForeignKey('matricula_id', 'matriculas', 'id')
+            ->addForeignKey('turmas_id', 'turmas', 'id')
             ->create();
         
         $presenca = $this->table('presencas');
         $presenca
-            ->addColumn('matricula_id', 'integer', ['limit'=>50])
-            ->addColumn('turma_id', 'string', ['limit'=>50])
+            ->addColumn('matricula_id', 'integer', ['limit'=>10])
+            ->addColumn('turma_id', 'integer', ['limit'=>10])
             ->addColumn('data_aula', 'datetime')
             ->addColumn('presente', 'boolean')
             ->addForeignKey('matricula_id', 'matriculas', 'id')

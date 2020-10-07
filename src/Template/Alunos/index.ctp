@@ -8,6 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Aluno'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Matriculas'), ['controller' => 'Matriculas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Matricula'), ['controller' => 'Matriculas', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="alunos index large-9 medium-8 columns content">
@@ -16,12 +18,13 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('id_aluno') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nome') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_nasc') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nome_mae') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('telefone') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('sexo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_criacao') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_modificacao') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_delecao') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,12 +32,13 @@
             <?php foreach ($alunos as $aluno): ?>
             <tr>
                 <td><?= $this->Number->format($aluno->id) ?></td>
-                <td><?= $this->Number->format($aluno->id_aluno) ?></td>
                 <td><?= h($aluno->nome) ?></td>
                 <td><?= h($aluno->data_nasc) ?></td>
-                <td><?= h($aluno->nome_mae) ?></td>
                 <td><?= h($aluno->telefone) ?></td>
-                <td><?= h($aluno->email) ?></td>
+                <td><?= h($aluno->sexo) ?></td>
+                <td><?= h($aluno->data_criacao) ?></td>
+                <td><?= h($aluno->data_modificacao) ?></td>
+                <td><?= h($aluno->data_delecao) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $aluno->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $aluno->id]) ?>
