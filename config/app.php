@@ -204,8 +204,8 @@ return [
             'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
-            'username' => null,
-            'password' => null,
+            'username' => larizalaura,
+            'password' => 09092006@Llo,
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
@@ -256,7 +256,11 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
+<<<<<<< HEAD
             'password' => '',
+=======
+            'password' => 'Barao@123',
+>>>>>>> a6ea197a4ee553295f50ce1f5773de8e43461de9
             'database' => 'creche',
             /*
              * You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
