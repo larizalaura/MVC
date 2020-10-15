@@ -48,9 +48,9 @@ class MatriculadosFixture extends TestFixture
                 'id' => 1,
                 'matricula_id' => 1,
                 'turmas_id' => 1,
-                'data_criacao' => '2020-10-07 02:17:24',
-                'data_modificacao' => '2020-10-07 02:17:24',
-                'data_delecao' => '2020-10-07 02:17:24'
+                'data_criacao' => '2020-10-14 23:32:39',
+                'data_modificacao' => '2020-10-14 23:32:39',
+                'data_delecao' => '2020-10-14 23:32:39'
             ],
         ];
         parent::init();

@@ -60,12 +60,12 @@ class MatriculadosTable extends Table
             ->allowEmptyString('id', 'create');
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            ->dateTime('data_criacao');
+            //->notEmptyDateTime('data_criacao');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            ->dateTime('data_modificacao');
+            //->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')

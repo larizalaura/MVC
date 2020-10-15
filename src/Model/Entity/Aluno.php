@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nome
- * @property \Cake\I18n\FrozenTime $data_nasc
+ * @property \Cake\I18n\FrozenDate $data_nasc
  * @property string $telefone
  * @property string $sexo
  * @property \Cake\I18n\FrozenTime $data_criacao

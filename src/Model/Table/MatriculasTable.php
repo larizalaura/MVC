@@ -64,16 +64,21 @@ class MatriculasTable extends Table
 
         $validator
             ->boolean('matricula_ativa')
-            ->requirePresence('matricula_ativa', 'create')
-            ->notEmptyString('matricula_ativa');
+            ->requirePresence('matricula_ativa', 'create');
+            //->notEmptyString('matricula_ativa');
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            ->integer('ano_matricula')
+            ->requirePresence('ano_matricula', 'create');
+            //->notEmptyString('ano_matricula');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            ->dateTime('data_criacao');
+            //->notEmptyDateTime('data_criacao');
+
+        $validator
+            ->dateTime('data_modificacao');
+            //->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')

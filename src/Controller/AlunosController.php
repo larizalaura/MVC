@@ -103,4 +103,24 @@ class AlunosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function busca_aluno()
+    {   
+        if ($this->request->is('post')) {
+            $result = (int) $this->request->getData('id');
+            
+            $this->redirect(['action' => 'resultado_busca_aluno', $result]);
+        }
+        
+       
+    }
+
+    public function resultado_busca_aluno($id){
+        $query = $this->Alunos->find();
+
+        $alunos = $query->where(['id' => $id]);
+
+        $this->set('alunos',$alunos);
+    }
+
 }

@@ -56,33 +56,33 @@ class AlunosTable extends Table
         $validator
             ->scalar('nome')
             ->maxLength('nome', 100)
-            ->requirePresence('nome', 'create')
-            ->notEmptyString('nome');
+            ->requirePresence('nome', 'create');
+            //->notEmptyString('nome');
 
         $validator
-            ->dateTime('data_nasc')
-            ->requirePresence('data_nasc', 'create')
-            ->notEmptyDateTime('data_nasc');
+            ->date('data_nasc')
+            ->requirePresence('data_nasc', 'create');
+            //->notEmptyDate('data_nasc');
 
         $validator
             ->scalar('telefone')
             ->maxLength('telefone', 100)
-            ->requirePresence('telefone', 'create')
-            ->notEmptyString('telefone');
+            ->requirePresence('telefone', 'create');
+            //->notEmptyString('telefone');
 
         $validator
             ->scalar('sexo')
             ->maxLength('sexo', 1)
-            ->requirePresence('sexo', 'create')
-            ->notEmptyString('sexo');
+            ->requirePresence('sexo', 'create');
+            //->notEmptyString('sexo');
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            ->dateTime('data_criacao');
+            //->notEmptyDateTime('data_criacao');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            ->dateTime('data_modificacao');
+            //->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')

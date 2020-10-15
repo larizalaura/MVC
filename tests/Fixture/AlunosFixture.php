@@ -17,7 +17,7 @@ class AlunosFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'nome' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'data_nasc' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'data_nasc' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'telefone' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'sexo' => ['type' => 'string', 'length' => 1, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'data_criacao' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
@@ -43,12 +43,12 @@ class AlunosFixture extends TestFixture
             [
                 'id' => 1,
                 'nome' => 'Lorem ipsum dolor sit amet',
-                'data_nasc' => '2020-10-07 02:16:19',
+                'data_nasc' => '2020-10-14',
                 'telefone' => 'Lorem ipsum dolor sit amet',
                 'sexo' => 'L',
-                'data_criacao' => '2020-10-07 02:16:19',
-                'data_modificacao' => '2020-10-07 02:16:19',
-                'data_delecao' => '2020-10-07 02:16:19'
+                'data_criacao' => '2020-10-14 23:32:12',
+                'data_modificacao' => '2020-10-14 23:32:12',
+                'data_delecao' => '2020-10-14 23:32:12'
             ],
         ];
         parent::init();

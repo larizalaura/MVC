@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property bool $matricula_ativa
  * @property int $aluno_id
+ * @property int $ano_matricula
  * @property \Cake\I18n\FrozenTime $data_criacao
  * @property \Cake\I18n\FrozenTime $data_modificacao
  * @property \Cake\I18n\FrozenTime|null $data_delecao
@@ -31,6 +32,7 @@ class Matricula extends Entity
     protected $_accessible = [
         'matricula_ativa' => true,
         'aluno_id' => true,
+        'ano_matricula' => true,
         'data_criacao' => true,
         'data_modificacao' => true,
         'data_delecao' => true,

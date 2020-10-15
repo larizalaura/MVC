@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Aluno $aluno
  */
+
+$this->layout = 'creche/layout_creche'
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -59,6 +62,7 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Matricula Ativa') ?></th>
                 <th scope="col"><?= __('Aluno Id') ?></th>
+                <th scope="col"><?= __('Ano Matricula') ?></th>
                 <th scope="col"><?= __('Data Criacao') ?></th>
                 <th scope="col"><?= __('Data Modificacao') ?></th>
                 <th scope="col"><?= __('Data Delecao') ?></th>
@@ -69,6 +73,7 @@
                 <td><?= h($matriculas->id) ?></td>
                 <td><?= h($matriculas->matricula_ativa) ?></td>
                 <td><?= h($matriculas->aluno_id) ?></td>
+                <td><?= h($matriculas->ano_matricula) ?></td>
                 <td><?= h($matriculas->data_criacao) ?></td>
                 <td><?= h($matriculas->data_modificacao) ?></td>
                 <td><?= h($matriculas->data_delecao) ?></td>

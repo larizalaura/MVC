@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Matricula $matricula
  */
+
+$this->layout = 'creche/layout_creche'
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -29,6 +32,10 @@
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($matricula->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Ano Matricula') ?></th>
+            <td><?= $this->Number->format($matricula->ano_matricula) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Data Criacao') ?></th>

@@ -3,18 +3,18 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Turma[]|\Cake\Collection\CollectionInterface $turmas
  */
+
+$this->layout = 'creche/layout_creche'
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Turma'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Presencas'), ['controller' => 'Presencas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Presenca'), ['controller' => 'Presencas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Nova Turma'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="turmas index large-9 medium-8 columns content">
-    <h3><?= __('Turmas') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<div class="panel panel-primary">
+    <div class="panel-heading"> <h3><?= __('Turmas') ?></h3></div>
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -24,9 +24,6 @@
                 <th scope="col"><?= $this->Paginator->sort('periodo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('turma_ativa') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('total_alunos') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('data_criacao') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('data_modificacao') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('data_delecao') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -38,11 +35,8 @@
                 <td><?= $this->Number->format($turma->ano_atual) ?></td>
                 <td><?= h($turma->sub_id_turma) ?></td>
                 <td><?= h($turma->periodo) ?></td>
-                <td><?= h($turma->turma_ativa) ?></td>
+                <td><?= h($return = $turma->turma_ativa == 1 ? "ATIVO":"INATIVO") ?></td>
                 <td><?= $this->Number->format($turma->total_alunos) ?></td>
-                <td><?= h($turma->data_criacao) ?></td>
-                <td><?= h($turma->data_modificacao) ?></td>
-                <td><?= h($turma->data_delecao) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $turma->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $turma->id]) ?>

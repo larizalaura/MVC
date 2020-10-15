@@ -5,7 +5,7 @@
  */
 ?>
 
-<?php $this->layout = 'default' ?>
+<?php $this->layout = 'prototipo/profissional' ?>
 
 
 <nav class="large-3 medium-4 columns" id="actions-sidebar">

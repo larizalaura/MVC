@@ -50,9 +50,9 @@ class TurmasFixture extends TestFixture
                 'periodo' => 'Lor',
                 'turma_ativa' => 1,
                 'total_alunos' => 1,
-                'data_criacao' => '2020-10-07 02:17:14',
-                'data_modificacao' => '2020-10-07 02:17:14',
-                'data_delecao' => '2020-10-07 02:17:14'
+                'data_criacao' => '2020-10-14 23:32:29',
+                'data_modificacao' => '2020-10-14 23:32:29',
+                'data_delecao' => '2020-10-14 23:32:29'
             ],
         ];
         parent::init();

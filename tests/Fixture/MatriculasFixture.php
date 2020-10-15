@@ -18,6 +18,7 @@ class MatriculasFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'matricula_ativa' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'aluno_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'ano_matricula' => ['type' => 'integer', 'length' => 4, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'data_criacao' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'data_modificacao' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'data_delecao' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
@@ -46,9 +47,10 @@ class MatriculasFixture extends TestFixture
                 'id' => 1,
                 'matricula_ativa' => 1,
                 'aluno_id' => 1,
-                'data_criacao' => '2020-10-07 02:16:42',
-                'data_modificacao' => '2020-10-07 02:16:42',
-                'data_delecao' => '2020-10-07 02:16:42'
+                'ano_matricula' => 1,
+                'data_criacao' => '2020-10-14 23:32:20',
+                'data_modificacao' => '2020-10-14 23:32:20',
+                'data_delecao' => '2020-10-14 23:32:20'
             ],
         ];
         parent::init();

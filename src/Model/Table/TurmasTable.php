@@ -55,43 +55,43 @@ class TurmasTable extends Table
 
         $validator
             ->integer('semestre')
-            ->requirePresence('semestre', 'create')
-            ->notEmptyString('semestre');
+            ->requirePresence('semestre', 'create');
+            //->notEmptyString('semestre');
 
         $validator
             ->integer('ano_atual')
-            ->requirePresence('ano_atual', 'create')
-            ->notEmptyString('ano_atual');
+            ->requirePresence('ano_atual', 'create');
+            //->notEmptyString('ano_atual');
 
         $validator
             ->scalar('sub_id_turma')
             ->maxLength('sub_id_turma', 2)
-            ->requirePresence('sub_id_turma', 'create')
-            ->notEmptyString('sub_id_turma');
+            ->requirePresence('sub_id_turma', 'create');
+            //->notEmptyString('sub_id_turma');
 
         $validator
             ->scalar('periodo')
             ->maxLength('periodo', 5)
-            ->requirePresence('periodo', 'create')
-            ->notEmptyString('periodo');
+            ->requirePresence('periodo', 'create');
+            //->notEmptyString('periodo');
 
         $validator
             ->boolean('turma_ativa')
-            ->requirePresence('turma_ativa', 'create')
-            ->notEmptyString('turma_ativa');
+            ->requirePresence('turma_ativa', 'create');
+            //->notEmptyString('turma_ativa');
 
         $validator
             ->integer('total_alunos')
-            ->requirePresence('total_alunos', 'create')
-            ->notEmptyString('total_alunos');
+            ->requirePresence('total_alunos', 'create');
+            //->notEmptyString('total_alunos');
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            ->dateTime('data_criacao');
+            //->notEmptyDateTime('data_criacao');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            ->dateTime('data_modificacao');
+            //->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')
