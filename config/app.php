@@ -204,11 +204,11 @@ return [
             'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
-            'username' => null,
-            'password' => null,
+            'username' => '',
+            'password' => ,
             'client' => null,
             'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null)
         ],
     ],
 
