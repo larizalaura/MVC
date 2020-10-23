@@ -12,7 +12,7 @@ class CreateCardapios extends AbstractMigration
             
             ->addColumn('tipo','string',['limit'=>100])
             ->addColumn('data','date',['limit'=>100])
-            ->addColumn('horario','time',['limit'=>100])
+            
             ->addColumn('texto_cardapio','string',['limit'=>100])
             ->addColumn('nutricionista','string',['limit'=>100])
             ->addColumn('usuario_id','integer',['null'=> true])
