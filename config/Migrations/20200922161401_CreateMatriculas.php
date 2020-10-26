@@ -15,6 +15,8 @@ class CreateMatriculas extends AbstractMigration
             ->addColumn('matricula_ativa', 'boolean')
             ->addColumn('aluno_id', 'integer', ['limit'=>10])
             ->addForeignKey('aluno_id', 'alunos', 'id')
+            ->addColumn('responsavel_id', 'integer', ['limit'=>10])
+            ->addForeignKey('responsavel_id', 'responsaveis', 'id')
             ->addColumn('ano_matricula', 'integer', ['limit'=>4])
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
