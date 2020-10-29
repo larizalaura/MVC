@@ -37,6 +37,7 @@
             <li><?= $this->Html->link('Visualizar/Editar',['controller'=>'Matriculas','action'=>'listar_matriculados']); ?></li>
             <li><?= $this->Html->link('Matricular Aluno em Turma',['controller'=>'Matriculados','action'=>'add']); ?></li>
             <li><?= $this->Html->link('Matriculados',['controller'=>'Matriculados','action'=>'index']); ?></li>
+            <li><?= $this->Html->link('Responsaveis',['controller'=>'Responsaveis','action'=>'add']); ?></li>
           </ul>
         </li>
 

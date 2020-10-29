@@ -12,7 +12,7 @@ class CreateResponsaveis extends AbstractMigration
         $responsavel = $this->table('responsaveis');
         $responsavel
         ->addColumn('nome', 'string', ['limit'=> 100])
-        ->addColumn('data_nasc','date')
+        ->addColumn('data_nasc','datetime',['default'=>'CURRENT_TIMESTAMP'])
         ->addColumn('parentesco', 'string', ['limit'=>100])
         ->addColumn('cpf', 'string', ['limit'=>16])
         ->addColumn('rg', 'string', ['limit'=>16])
