@@ -8,7 +8,10 @@ class CreateFuncionario extends AbstractMigration
 {
     public function up()
     {
-       
+      //  $funcionario = $this->table('funcionarios');
+        //$funcionario
+         //   ->addColumn('nome','string',['limit'=>100])
+         //   ->addForeignKey('usuario_id','usuarios','id');
     }
 
     public function down()

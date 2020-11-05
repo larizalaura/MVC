@@ -57,33 +57,55 @@ class ResponsaveisTable extends Table
         $validator
             ->scalar('nome')
             ->maxLength('nome', 45)
-            ->requirePresence('nome', 'create')
-            ->notEmptyString('nome');
+            ->requirePresence('nome', 'create');
+           // ->notEmptyString('nome');
+
+        $validator
+        ->dateTime('data_nasc');
+        //   ->notEmptyDateTime('data_nasc');
 
         $validator
             ->scalar('cpf')
             ->maxLength('cpf', 45)
-            ->requirePresence('cpf', 'create')
-            ->notEmptyString('cpf');
+            ->requirePresence('cpf', 'create');
+        //    ->notEmptyString('cpf');
 
         $validator
             ->scalar('telefone')
             ->maxLength('telefone', 45)
-            ->requirePresence('telefone', 'create')
-            ->notEmptyString('telefone');
+            ->requirePresence('telefone', 'create');
+           // ->notEmptyString('telefone');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+        ->scalar('parentesco')
+        ->maxLength('parentesco', 45)
+        ->requirePresence('parentesco', 'create');
+          // ->notEmptyString('parentesco');   
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+        ->email('rg')
+        ->requirePresence('rg', 'create');
+         // ->notEmptyString('rg');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+        ->scalar('profissao')
+        ->maxLength('profissao', 45)
+        ->requirePresence('profissao', 'create');
+        // ->notEmptyString('parentesco'); 
+
+        $validator
+        ->scalar('email')
+        ->maxLength('email', 45)
+        ->requirePresence('email', 'create');
+        // ->notEmptyString('email'); 
+
+        $validator
+            ->dateTime('data_criacao');
+         //   ->notEmptyDateTime('data_criacao');
+
+        $validator
+            ->dateTime('data_modificacao');
+          //  ->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')

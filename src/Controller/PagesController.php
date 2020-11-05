@@ -65,4 +65,9 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function busca_alunos(){
+        $result = $this->request->getQuery('id');
+        echo $result;
+    }
 }
