@@ -23,15 +23,27 @@
             <td><?= h($responsavei->nome) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('parentesco') ?></th>
+            <td><?= h($responsavei->parentesco) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Cpf') ?></th>
             <td><?= h($responsavei->cpf) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Telefone') ?></th>
+            <th scope="row"><?= __('rg') ?></th>
+            <td><?= h($responsavei->rg) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('profissao') ?></th>
+            <td><?= h($responsavei->profissao) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('telefone') ?></th>
             <td><?= h($responsavei->telefone) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Email') ?></th>
+            <th scope="row"><?= __('email') ?></th>
             <td><?= h($responsavei->email) ?></td>
         </tr>
         <tr>
