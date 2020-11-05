@@ -1,4 +1,4 @@
-ntax: glob
+syntax: glob
 
 /config/app.php
 /tmp/*
