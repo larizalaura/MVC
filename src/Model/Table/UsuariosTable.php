@@ -31,8 +31,20 @@ class UsuariosTable extends Table
         parent::initialize($config);
 
         $this->setTable('usuarios');
-        $this->setDisplayField('id');
+        $this->setDisplayField('nome');
         $this->setPrimaryKey('id');
+
+        $this->hasOne('Responsaveis');
+    }
+
+    public function findOwnedByResponsaveis(Query $query, array $options)
+    {
+        return $query->contain(['Responsaveis'])->where(['responsaveis.id is not null'])->select(['Usuarios.id','Usuarios.nome']);
+    }
+
+    public function findOwnedByFuncionarios(Query $query, array $options)
+    {
+        return $query->contain(['Responsaveis'])->where(['responsaveis.id is null'])->select(['Usuarios.id','Usuarios.nome']);
     }
 
     /**

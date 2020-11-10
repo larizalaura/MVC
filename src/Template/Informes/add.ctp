@@ -18,7 +18,53 @@
   <?= $this->Html->css('/bower_components/jquery-ui-1.12.1.custom/jquery-ui.min.css') ?>
 <?php $this->end(); ?>
 
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<?php $this->start('script'); ?>   
+
+  $(".datemask").inputmask({
+    alias: "datetime",
+    inputFormat: "dd/mm/yyyy"
+  });
+
+
+  $('.datepicker').datepicker({
+    dateFormat: 'dd/mm/yy',
+    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    nextText: 'Próximo',
+    prevText: 'Anterior'
+  });
+  
+/*
+  $('#funcionario-id').select2({
+    theme:'bootstrap',
+    placeholder: "Seleciona o funcionario"
+  });
+
+  $('#responsavel-id').select2({
+    theme:'bootstrap',
+    placeholder: "Seleciona o responsavel"
+  });
+*/
+
+  $('#unidade-outra-destinataria-div').hide();
+  $("#outra-unidade").on('ifChecked',function(event){
+    $('#unidade-outra-destinataria-div').show();
+    $('#unidade-destinataria-div').hide();
+  });
+  $("#outra-unidade").on('ifUnchecked',function(event){
+    $('#unidade-outra-destinataria-div').hide();
+    $('#unidade-destinataria-div').show();
+  });
+
+<?php $this->end(); ?>   
+
+<?php $this->layout = 'creche/layout_creche' ?>
+<?php $this->assign('title','Novo Informe') ?>
+
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Informes'), ['action' => 'index']) ?></li>
@@ -27,21 +73,56 @@
         <li><?= $this->Html->link(__('List Informes Arquivos'), ['controller' => 'InformesArquivos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Informes Arquivo'), ['controller' => 'InformesArquivos', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="informes form large-9 medium-8 columns content">
-    <?= $this->Form->create($informe) ?>
-    <fieldset>
-        <legend><?= __('Add Informe') ?></legend>
-        <?php
-            echo $this->Form->control('titulo');
-            echo $this->Form->control('corpo');
-            echo $this->Form->control('funcionario_id');
-            echo $this->Form->control('responsavel_id', ['options' => $usuarios]);
-            echo $this->Form->control('data_criacao');
-            echo $this->Form->control('data_modificacao');
-            echo $this->Form->control('data_delecao', ['empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+</nav> -->
+
+<!-- <div class="informes form large-9 medium-8 columns content"> -->
+  <?= $this->Form->create($informe) ?>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+              <fieldset>
+                  <div class="col-md-6">
+                    <?= $this->Form->control('responsavel_id', [
+                      'options' => $responsaveis, 
+                      'label'=> '',
+                      'prepend'=>'<span>De</span>'
+                      ]);?>
+                  </div>
+
+                  <div class="col-md-6">
+                    <?= $this->Form->control('funcionario_id', [
+                      'options' => $funcionarios,
+                      'label'=> '',
+                      'prepend'=>'<span>para</span>'
+                      ]);?>
+                  </div>
+                 
+              </fieldset>
+
+              <fieldset>
+                  <!-- <legend><?= __('Conteúdo') ?></legend> -->
+                  <div class="col-md-12">
+                    <?= $this->Form->control('titulo', [
+                      'placeholder' => 'Informe o titulo do informe',
+                      'label'=> '',
+                      'prepend'=>'<span>Assunto</span>'
+                      ]); ?>
+                  </div>
+
+                  <div class="col-md-12 form-group">
+                    <?= $this->Form->textarea('corpo',[
+                      'placeholder' => 'Insira aqui o corpo da mensagem',
+                      'label'=> '',
+                    ]); ?>
+                  </div>
+              </fieldset>
+
+              <div class="col-md-12">
+                <?= $this->Form->button(__('Enviar')) ?>
+              </div>
+
+      </div>
+    </div>
+  </div>
+  <?= $this->Form->end() ?>
+<!-- </div> -->
