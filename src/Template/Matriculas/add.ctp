@@ -9,7 +9,7 @@ $this->layout = 'creche/layout_creche'
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Lista Matriculas'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Lista Matriculas'), ['action' => 'listar_matriculados']) ?></li>
     </ul>
 </nav>
 <div class="matriculas form large-9 medium-8 columns content">

@@ -205,7 +205,7 @@ return [
             'port' => 25,
             'timeout' => 30,
             'username' => '',
-            'password' => ,
+            'password' => '',
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null)

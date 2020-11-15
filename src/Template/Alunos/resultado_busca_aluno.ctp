@@ -4,8 +4,26 @@
  * @var \App\Model\Entity\Aluno[]|\Cake\Collection\CollectionInterface $alunos
  */
 ?>
+<?php $this->start('scriptLib'); ?>
+  <?= $this->Html->script('/bower_components/select2/dist/js/select2.full.min.js') ?>
+  <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
+<?php $this->end(); ?>
+<?php $this->start('css'); ?>
+  <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
+  <?= $this->Html->css('/bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css') ?>
+<?php $this->end(); ?>
 
 <?php $this->layout = 'creche/layout_creche'?>
+
+<?php $teste = "teste" ?>
+
+<?php $this->start('script'); ?>
+$('#datamask-nasc').inputmask({
+    alias: "datetime",
+    inputFormat: "dd/mm/yy"
+  });
+<?php $this->end(); ?>
+
 
 <div class="panel panel-primary">
     <div class="panel-heading" ><h3><?= __('Resultado') ?></h3></div>
@@ -25,7 +43,7 @@
             <tr>
                 <td><?= $this->Number->format($aluno->id) ?></td>
                 <td><?= h($aluno->nome) ?></td>
-                <td><?= h($aluno->data_nasc) ?></td>
+                <td><span id="datamask-nasc"><?= h($aluno->data_nasc) ?></span></td>
                 <td><?= h($aluno->telefone) ?></td>
                 <td><?= h($aluno->sexo) ?></td>
                 <!-- <td><?= h($aluno->data_criacao) ?></td>
