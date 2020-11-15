@@ -66,22 +66,18 @@ class InformesTable extends Table
         $validator
             ->scalar('titulo')
             ->maxLength('titulo', 45)
-            ->requirePresence('titulo', 'create')
-            ->notEmptyString('titulo');
+            ->requirePresence('titulo', 'create');
 
         $validator
             ->scalar('corpo')
             ->maxLength('corpo', 45)
-            ->requirePresence('corpo', 'create')
-            ->notEmptyString('corpo');
+            ->requirePresence('corpo', 'create');
 
         $validator
-            ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            ->dateTime('data_criacao');
 
         $validator
-            ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            ->dateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')

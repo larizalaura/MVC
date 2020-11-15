@@ -19,9 +19,10 @@ $this->layout = 'creche/layout_creche'
         <?php
             echo $this->Form->control('matricula_ativa', ['default' => true]);
             echo $this->Form->control('aluno_id', ['options' => $alunos]);
+            echo $this->Form->control('nome', ['options' => $alunos]);
             echo $this->Form->control('ano_matricula');
+            echo $this->Form->control('idade');
+
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
 </div>

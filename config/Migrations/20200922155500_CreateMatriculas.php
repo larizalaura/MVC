@@ -19,6 +19,8 @@ class CreateMatriculas extends AbstractMigration
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
+            ->addColumn('responsaveis_id', 'integer', ['limit'=>10])
+            ->addForeignKey('responsaveis_id', 'responsaveis', 'id')
             ->create();
     }
 
