@@ -9,41 +9,12 @@ $this->layout = 'creche/layout_creche'?>
 <?php $this->start('scriptLib'); ?>
   <?= $this->Html->script('/bower_components/select2/dist/js/select2.full.min.js') ?>
   <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
+  <?= $this->Html->script('alunos_cadastro.js') ?>
 <?php $this->end(); ?>
 <?php $this->start('css'); ?>
   <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
   <?= $this->Html->css('/bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css') ?>
 <?php $this->end(); ?>
-
-<?php $this->start('script'); ?>
-
-
-$('.busca-aluno').select2({
-    theme: 'bootstrap',
-    ajax:{
-        url: "<?= $this->Url->build(['controller'=>'Alunos','action'=>'get_aluno','_ext'=>'json'], true); ?>",
-        dataType: 'json',
-        data: function(params){
-            console.log(params);
-            return {
-                q: params.term,
-                page: params.page,
-            };
-        },
-        processResults: function(data, params){
-            console.log(data);
-            var nomes = data.alunos.map( item => { return {id: item['id'], text: item['nome']}});
-            return {
-                results: nomes,
-            }
-            console.log(data);
-        }
-    },
-    minimumInputLength: 3
-});
-
-<?php $this->end(); ?>
-
 
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -56,7 +27,7 @@ $('.busca-aluno').select2({
     <legend><?= __('Pesquisar Aluno') ?></legend>
     <fieldset>
         <?php
-        echo $this->Form->input('pesquisar', ['class' => 'busca-aluno', 'id' => 'pesquisar-aluno']);
+        echo $this->Form->input('pesquisar', ['class' => 'pesquisar-aluno', 'id' => 'pesquisar-aluno', 'type' => 'select']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Pesquisar')) ?>
@@ -77,6 +48,7 @@ $('.busca-aluno').select2({
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
+        <div id="resultado">
         <tbody>
             <?php foreach ($alunos as $aluno): ?>
             <tr>
@@ -93,6 +65,7 @@ $('.busca-aluno').select2({
             </tr>
             <?php endforeach; ?>
         </tbody>
+        </div>
     </table>
     <div class="paginator">
         <ul class="pagination">
@@ -102,6 +75,6 @@ $('.busca-aluno').select2({
             <?= $this->Paginator->next(__('next') . ' >') ?>
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} totais')]) ?></p>
     </div>
 </div>

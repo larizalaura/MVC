@@ -204,7 +204,7 @@ return [
             'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
-            'username' => '',
+            'username' => 'root',
             'password' => '',
             'client' => null,
             'tls' => null,

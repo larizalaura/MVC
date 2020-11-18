@@ -56,25 +56,25 @@ class CardapiosTable extends Table
         $validator
             ->scalar('tipo')
             ->maxLength('tipo', 100)
-            ->requirePresence('tipo', 'create')
-            ->notEmptyString('tipo');
+            ->requirePresence('tipo', 'create');
+            //->notEmptyString('tipo');
 
         $validator
             ->date('data')
-            ->requirePresence('data', 'create')
-            ->notEmptyDate('data');
+            ->requirePresence('data', 'create');
+            //->notEmptyDate('data');
 
         $validator
             ->scalar('texto_cardapio')
             ->maxLength('texto_cardapio', 100)
-            ->requirePresence('texto_cardapio', 'create')
-            ->notEmptyString('texto_cardapio');
+            ->requirePresence('texto_cardapio', 'create');
+            //->notEmptyString('texto_cardapio');
 
         $validator
             ->scalar('nutricionista')
             ->maxLength('nutricionista', 100)
-            ->requirePresence('nutricionista', 'create')
-            ->notEmptyString('nutricionista');
+            ->requirePresence('nutricionista', 'create');
+            //->notEmptyString('nutricionista');
 
         $validator
             ->dateTime('data_criacao')

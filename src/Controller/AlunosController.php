@@ -20,10 +20,15 @@ class AlunosController extends AppController
      */
     public function index()
     {
-        $alunos = $this->paginate($this->Alunos);
+        if($this->request->is('post')){
+            $result = $this->request->getData('pesquisar');
+            
+            $this->redirect(['action' => 'view', $result]);
+        }else{
+            $alunos = $this->paginate($this->Alunos);
 
-        $this->set(compact('alunos'));
-        $this->set('_serialize', 'alunos');
+            $this->set(compact('alunos'));
+        }
     }
 
     /**
@@ -105,44 +110,21 @@ class AlunosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-    
-    public function busca_aluno()
-    {   
-        $nomes = $this->Alunos->find();
-
-        //$this->set('serialize', ['nome']);
-
-
-        if ($this->request->is('post')) {
-            $result = $this->request->getData('id');
-            
-            $this->redirect(['action' => 'resultado_busca_aluno', $result]);
-        }
-        
-    }
-
-    public function resultado_busca_aluno($id){
-        $query = $this->Alunos->find()
-            ->where(['nome LIKE' => "%".$id."%"]);
-
-        $this->set('alunos',$query);
-
-        //
-        
-    }
 
     public function get_aluno(){
-        $alunos = $this->Alunos->find();
+        $query = $this->Alunos->find();
 
-        $q = $this->request->getQuery('q');
-        
-        $alunos->where(['Alunos.nome LIKE ' => '%'.$q.'%']);
-        
-        
+        if($this->request->getQuery('q')){
+            $q = $this->request->getQuery('q');
+            $query->where(['Alunos.nome LIKE ' => '%'.$q.'%']);
+        }
+
+        $alunos = $this->paginate($query);
 
         $this->set('alunos', $alunos);
         $this->set('_serialize', ['alunos']);
-        
     }
+
+    
 
 }
