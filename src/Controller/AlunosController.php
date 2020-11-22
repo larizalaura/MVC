@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Controller\Component\RequestHandlerComponent;
 
 /**
  * Alunos Controller
@@ -19,9 +20,15 @@ class AlunosController extends AppController
      */
     public function index()
     {
-        $alunos = $this->paginate($this->Alunos);
+        if($this->request->is('post')){
+            $result = $this->request->getData('pesquisar');
+            
+            $this->redirect(['action' => 'view', $result]);
+        }else{
+            $alunos = $this->paginate($this->Alunos);
 
-        $this->set(compact('alunos'));
+            $this->set(compact('alunos'));
+        }
     }
 
     /**
@@ -103,24 +110,21 @@ class AlunosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-    
-    public function busca_aluno()
-    {   
-        if ($this->request->is('post')) {
-            $result = (int) $this->request->getData('id');
-            
-            $this->redirect(['action' => 'resultado_busca_aluno', $result]);
-        }
-        
-       
-    }
 
-    public function resultado_busca_aluno($id){
+    public function get_aluno(){
         $query = $this->Alunos->find();
 
-        $alunos = $query->where(['id' => $id]);
+        if($this->request->getQuery('q')){
+            $q = $this->request->getQuery('q');
+            $query->where(['Alunos.nome LIKE ' => '%'.$q.'%']);
+        }
 
-        $this->set('alunos',$alunos);
+        $alunos = $this->paginate($query);
+
+        $this->set('alunos', $alunos);
+        $this->set('_serialize', ['alunos']);
     }
+
+    
 
 }
