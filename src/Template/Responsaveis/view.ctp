@@ -23,7 +23,7 @@
             <td><?= h($responsavei->nome) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('parentesco') ?></th>
+            <th scope="row"><?= __('Parentesco') ?></th>
             <td><?= h($responsavei->parentesco) ?></td>
         </tr>
         <tr>
@@ -31,28 +31,36 @@
             <td><?= h($responsavei->cpf) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('rg') ?></th>
+            <th scope="row"><?= __('Rg') ?></th>
             <td><?= h($responsavei->rg) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('profissao') ?></th>
+            <th scope="row"><?= __('Profissao') ?></th>
             <td><?= h($responsavei->profissao) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('telefone') ?></th>
-            <td><?= h($responsavei->telefone) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('email') ?></th>
+            <th scope="row"><?= __('Email') ?></th>
             <td><?= h($responsavei->email) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Usuario') ?></th>
-            <td><?= $responsavei->has('usuario') ? $this->Html->link($responsavei->usuario->id, ['controller' => 'Usuarios', 'action' => 'view', $responsavei->usuario->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($responsavei->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Endereco Id') ?></th>
+            <td><?= $this->Number->format($responsavei->endereco_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Aluno Id') ?></th>
+            <td><?= $this->Number->format($responsavei->aluno_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Telefone Id') ?></th>
+            <td><?= $this->Number->format($responsavei->telefone_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Data Nasc') ?></th>
+            <td><?= h($responsavei->data_nasc) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Data Criacao') ?></th>

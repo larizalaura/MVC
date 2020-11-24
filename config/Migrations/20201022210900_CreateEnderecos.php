@@ -15,10 +15,9 @@ class CreateEnderecos extends AbstractMigration
             ->addColumn('numero','integer',['limit'=>5])
             ->addColumn('bairro','string',['limit'=>100])
             ->addColumn('cidade','string',['limit'=>100])
-
-
-            ->addColumn('responsavel_id', 'integer', ['limit'=> 10])
-            ->addForeignKey('responsavel_id','responsaveis','id')
+            ->addColumn('estado','string',['limit'=>100])
+            ->addColumn('tipo','string',['limit'=>100])
+            
             ->create();
     }
 

@@ -50,12 +50,17 @@ class TurmasController extends AppController
         $turma = $this->Turmas->newEntity();
         if ($this->request->is('post')) {
             $turma = $this->Turmas->patchEntity($turma, $this->request->getData());
-            if ($this->Turmas->save($turma)) {
-                $this->Flash->success(__('The turma has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+            if($this->validaTurma($turma)){
+                $this->Flash->error(__('Turma já existe, tente novamente!'));
+            }else{
+                if ($this->Turmas->save($turma)) {
+                    $this->Flash->success(__('A turma foi criada.'));
+
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The turma could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The turma could not be saved. Please, try again.'));
         }
         $this->set(compact('turma'));
     }
@@ -102,5 +107,21 @@ class TurmasController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    private function validaTurma($turma)
+    {
+        $turmas_cadastradas = $this->Turmas->find();
+        $flag_turma_existente = false;
+        foreach ($turmas_cadastradas as $turmas_cadastrada) {
+            if(strcmp($turmas_cadastrada->sub_id_turma,$turma->sub_id_turma)==0){
+                if($turmas_cadastrada->semestre == $turma->semestre){
+                    if($turmas_cadastrada->ano_atual == $turma->ano_atual){
+                        $flag_turma_existente = true;
+                    }
+                }
+            }
+        }
+        return $flag_turma_existente;
     }
 }

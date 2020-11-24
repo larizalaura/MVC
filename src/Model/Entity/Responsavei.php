@@ -8,10 +8,15 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nome
+ * @property \Cake\I18n\FrozenDate $data_nasc
+ * @property string $parentesco
  * @property string $cpf
- * @property string $telefone
+ * @property string $rg
+ * @property string $profissao
  * @property string $email
- * @property int $usuario_id
+ * @property int $endereco_id
+ * @property int $aluno_id
+ * @property int $telefone_id
  * @property \Cake\I18n\FrozenTime $data_criacao
  * @property \Cake\I18n\FrozenTime $data_modificacao
  * @property \Cake\I18n\FrozenTime|null $data_delecao
@@ -31,10 +36,15 @@ class Responsavei extends Entity
      */
     protected $_accessible = [
         'nome' => true,
+        'data_nasc' => true,
+        'parentesco' => true,
         'cpf' => true,
-        'telefone' => true,
+        'rg' => true,
+        'profissao' => true,
         'email' => true,
-        'usuario_id' => true,
+        'endereco_id' => true,
+        'aluno_id' => true,
+        'telefone_id' => true,
         'data_criacao' => true,
         'data_modificacao' => true,
         'data_delecao' => true,

@@ -18,6 +18,8 @@ class CreateAlunos extends AbstractMigration
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
+
+
             ->create();
         
     }

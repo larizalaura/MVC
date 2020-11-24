@@ -9,7 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Responsaveis Model
  *
- * @property \App\Model\Table\UsuariosTable|\Cake\ORM\Association\BelongsTo $Usuarios
+ * @property |\Cake\ORM\Association\BelongsTo $Enderecos
+ * @property |\Cake\ORM\Association\BelongsTo $Alunos
+ * @property |\Cake\ORM\Association\BelongsTo $Telefones
  *
  * @method \App\Model\Entity\Responsavei get($primaryKey, $options = [])
  * @method \App\Model\Entity\Responsavei newEntity($data = null, array $options = [])
@@ -36,8 +38,16 @@ class ResponsaveisTable extends Table
         $this->setDisplayField('nome');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Usuarios', [
-            'foreignKey' => 'usuario_id',
+        $this->belongsTo('Enderecos', [
+            'foreignKey' => 'endereco_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Alunos', [
+            'foreignKey' => 'aluno_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Telefones', [
+            'foreignKey' => 'telefone_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -56,48 +66,43 @@ class ResponsaveisTable extends Table
 
         $validator
             ->scalar('nome')
-            ->maxLength('nome', 45)
+            ->maxLength('nome', 100)
             ->requirePresence('nome', 'create');
-           // ->notEmptyString('nome');
+       //     ->notEmptyString('nome');
 
         $validator
-        ->dateTime('data_nasc');
-        //   ->notEmptyDateTime('data_nasc');
+            ->date('data_nasc')
+            ->requirePresence('data_nasc', 'create');
+          //  ->notEmptyDate('data_nasc');
+
+        $validator
+            ->scalar('parentesco')
+            ->maxLength('parentesco', 100)
+            ->requirePresence('parentesco', 'create');
+          //  ->notEmptyString('parentesco');
 
         $validator
             ->scalar('cpf')
-            ->maxLength('cpf', 45)
+            ->maxLength('cpf', 16)
             ->requirePresence('cpf', 'create');
-        //    ->notEmptyString('cpf');
+         //   ->notEmptyString('cpf');
 
         $validator
-            ->scalar('telefone')
-            ->maxLength('telefone', 45)
-            ->requirePresence('telefone', 'create');
-           // ->notEmptyString('telefone');
+            ->scalar('rg')
+            ->maxLength('rg', 16)
+            ->requirePresence('rg', 'create');
+         //   ->notEmptyString('rg');
 
         $validator
-        ->scalar('parentesco')
-        ->maxLength('parentesco', 45)
-        ->requirePresence('parentesco', 'create');
-          // ->notEmptyString('parentesco');   
+            ->scalar('profissao')
+            ->maxLength('profissao', 100)
+            ->requirePresence('profissao', 'create');
+         //   ->notEmptyString('profissao');
 
         $validator
-        ->email('rg')
-        ->requirePresence('rg', 'create');
-         // ->notEmptyString('rg');
-
-        $validator
-        ->scalar('profissao')
-        ->maxLength('profissao', 45)
-        ->requirePresence('profissao', 'create');
-        // ->notEmptyString('parentesco'); 
-
-        $validator
-        ->scalar('email')
-        ->maxLength('email', 45)
-        ->requirePresence('email', 'create');
-        // ->notEmptyString('email'); 
+            ->email('email')
+            ->requirePresence('email', 'create');
+         //   ->notEmptyString('email');
 
         $validator
             ->dateTime('data_criacao');
@@ -105,7 +110,7 @@ class ResponsaveisTable extends Table
 
         $validator
             ->dateTime('data_modificacao');
-          //  ->notEmptyDateTime('data_modificacao');
+           // ->notEmptyDateTime('data_modificacao');
 
         $validator
             ->dateTime('data_delecao')
@@ -124,7 +129,9 @@ class ResponsaveisTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
+        $rules->add($rules->existsIn(['endereco_id'], 'Enderecos'));
+        $rules->add($rules->existsIn(['aluno_id'], 'Alunos'));
+        $rules->add($rules->existsIn(['telefone_id'], 'Telefones'));
 
         return $rules;
     }

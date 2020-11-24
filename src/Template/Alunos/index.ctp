@@ -4,14 +4,37 @@
  * @var \App\Model\Entity\Aluno[]|\Cake\Collection\CollectionInterface $alunos
  */
 
-$this->layout = 'creche/layout_creche'
+$this->layout = 'creche/layout_creche'?>
 
-?>
+<?php $this->start('scriptLib'); ?>
+  <?= $this->Html->script('/bower_components/select2/dist/js/select2.full.min.js') ?>
+  <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
+  <?= $this->Html->script('alunos_cadastro.js') ?>
+<?php $this->end(); ?>
+<?php $this->start('css'); ?>
+  <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
+  <?= $this->Html->css('/bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css') ?>
+<?php $this->end(); ?>
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li><?= $this->Html->link(__('Novo Aluno'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
+
+<div class="alunos form large-9 medium-8 columns content">
+    <?= $this->Form->create(null, ['type' => 'post']) ?>
+    <legend><?= __('Pesquisar Aluno') ?></legend>
+    <fieldset>
+        <?php
+        echo $this->Form->input('pesquisar', ['class' => 'pesquisar-aluno', 'id' => 'pesquisar-aluno', 'type' => 'select']);
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Pesquisar')) ?>
+    <?= $this->Form->end() ?>
+    <br>
+</div>
+
 <div class="panel panel-primary">
     <div class="panel-heading"><h3><?= __('Alunos') ?></h3></div>
     <table class="table">
@@ -25,6 +48,7 @@ $this->layout = 'creche/layout_creche'
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
+        <div id="resultado">
         <tbody>
             <?php foreach ($alunos as $aluno): ?>
             <tr>
@@ -41,6 +65,7 @@ $this->layout = 'creche/layout_creche'
             </tr>
             <?php endforeach; ?>
         </tbody>
+        </div>
     </table>
     <div class="paginator">
         <ul class="pagination">
@@ -50,6 +75,6 @@ $this->layout = 'creche/layout_creche'
             <?= $this->Paginator->next(__('next') . ' >') ?>
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} totais')]) ?></p>
     </div>
 </div>

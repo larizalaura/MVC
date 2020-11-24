@@ -12,15 +12,13 @@ class CreateMatriculas extends AbstractMigration
     {
         $matricula = $this->table('matriculas');
         $matricula
-            ->addColumn('matricula_ativa', 'boolean')
             ->addColumn('aluno_id', 'integer', ['limit'=>10])
             ->addForeignKey('aluno_id', 'alunos', 'id')
-            ->addColumn('ano_matricula', 'integer', ['limit'=>4])
+            ->addColumn('tipo_vaga', 'string', ['limit'=>50])
+            ->addColumn('data_matricula', 'date')
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
-            ->addColumn('responsaveis_id', 'integer', ['limit'=>10])
-            ->addForeignKey('responsaveis_id', 'responsaveis', 'id')
             ->create();
     }
 
