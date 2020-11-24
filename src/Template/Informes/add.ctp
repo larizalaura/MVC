@@ -37,7 +37,7 @@
     prevText: 'Anterior'
   });
   
-/*
+
   $('#funcionario-id').select2({
     theme:'bootstrap',
     placeholder: "Seleciona o funcionario"
@@ -47,7 +47,7 @@
     theme:'bootstrap',
     placeholder: "Seleciona o responsavel"
   });
-*/
+
 
   $('#unidade-outra-destinataria-div').hide();
   $("#outra-unidade").on('ifChecked',function(event){
@@ -84,16 +84,14 @@
                   <div class="col-md-6">
                     <?= $this->Form->control('responsavel_id', [
                       'options' => $responsaveis, 
-                      'label'=> '',
-                      'prepend'=>'<span>De</span>'
+                      'label'=> 'Responsável',
                       ]);?>
                   </div>
 
                   <div class="col-md-6">
                     <?= $this->Form->control('funcionario_id', [
                       'options' => $funcionarios,
-                      'label'=> '',
-                      'prepend'=>'<span>para</span>'
+                      'label'=> 'Funcionário',
                       ]);?>
                   </div>
                  
@@ -104,8 +102,7 @@
                   <div class="col-md-12">
                     <?= $this->Form->control('titulo', [
                       'placeholder' => 'Informe o titulo do informe',
-                      'label'=> '',
-                      'prepend'=>'<span>Assunto</span>'
+                      'label'=> 'Assunto',
                       ]); ?>
                   </div>
 
