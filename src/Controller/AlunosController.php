@@ -125,6 +125,11 @@ class AlunosController extends AppController
         $this->set('_serialize', ['alunos']);
     }
 
-    
+    public function index2()
+    {
+        $alunos = $this->paginate($this->Alunos);
+
+        $this->set(compact('alunos'));        
+    }    
 
 }

@@ -11,6 +11,7 @@ $this->layout = 'creche/layout_creche'?>
   <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
   <?= $this->Html->script('alunos_cadastro.js') ?>
 <?php $this->end(); ?>
+
 <?php $this->start('css'); ?>
   <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
   <?= $this->Html->css('/bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css') ?>
