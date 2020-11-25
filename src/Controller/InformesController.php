@@ -63,14 +63,14 @@ class InformesController extends AppController
             $this->Flash->error(__('The informe could not be saved. Please, try again.'));
         }
 
-        $responsaveis= $this->Informes->Usuarios->find('ownedByResponsaveis', [])->map(function ($value, $key) {
+        $responsaveis = $this->Informes->Usuarios->find('ownedByResponsaveis', [])->map(function ($value, $key) {
             return [
                 'value' => $value->id,
                 'text' => $value->nome,
             ];
         });
 
-        $funcionarios= $this->Informes->Usuarios->find('ownedByFuncionarios', [])->map(function ($value, $key) {
+        $funcionarios = $this->Informes->Usuarios->find('ownedByFuncionarios', [])->map(function ($value, $key) {
             return [
                 'value' => $value->id,
                 'text' => $value->nome,
@@ -101,8 +101,22 @@ class InformesController extends AppController
             }
             $this->Flash->error(__('The informe could not be saved. Please, try again.'));
         }
-        $usuarios = $this->Informes->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('informe', 'usuarios'));
+        
+        $responsaveis = $this->Informes->Usuarios->find('ownedByResponsaveis', [])->map(function ($value, $key) {
+            return [
+                'value' => $value->id,
+                'text' => $value->nome,
+            ];
+        });
+
+        $funcionarios = $this->Informes->Usuarios->find('ownedByFuncionarios', [])->map(function ($value, $key) {
+            return [
+                'value' => $value->id,
+                'text' => $value->nome,
+            ];
+        });
+
+        $this->set(compact('informe', 'responsaveis', 'funcionarios'));
     }
 
     /**

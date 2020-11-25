@@ -25,7 +25,6 @@
     inputFormat: "dd/mm/yyyy"
   });
 
-
   $('.datepicker').datepicker({
     dateFormat: 'dd/mm/yy',
     dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
@@ -47,79 +46,66 @@
     theme:'bootstrap',
     placeholder: "Seleciona o responsavel"
   });
-
-
-  $('#unidade-outra-destinataria-div').hide();
-  $("#outra-unidade").on('ifChecked',function(event){
-    $('#unidade-outra-destinataria-div').show();
-    $('#unidade-destinataria-div').hide();
-  });
-  $("#outra-unidade").on('ifUnchecked',function(event){
-    $('#unidade-outra-destinataria-div').hide();
-    $('#unidade-destinataria-div').show();
-  });
-
 <?php $this->end(); ?>   
 
 <?php $this->layout = 'creche/layout_creche' ?>
 <?php $this->assign('title','Novo Informe') ?>
 
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Informes'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Informes Arquivos'), ['controller' => 'InformesArquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Informes Arquivo'), ['controller' => 'InformesArquivos', 'action' => 'add']) ?></li>
-    </ul>
-</nav> -->
 
-<!-- <div class="informes form large-9 medium-8 columns content"> -->
+<div class="informes form large-9 medium-8 columns content">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active heading"><?= __('Actions') ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('Lista de Informes'), ['action' => 'index']) ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('Lista de Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+    </ol>
+  </nav>
+
   <?= $this->Form->create($informe) ?>
 
     <div class="panel panel-default">
       <div class="panel-body">
-              <fieldset>
-                  <div class="col-md-6">
-                    <?= $this->Form->control('responsavel_id', [
-                      'options' => $responsaveis, 
-                      'label'=> 'Responsável',
-                      ]);?>
-                  </div>
+        <fieldset>
+          <div class="col-md-6">
+            <?= $this->Form->control('responsavel_id', [
+              'options' => $responsaveis, 
+              'label'=> 'Responsável',
+              ]);?>
+          </div>
 
-                  <div class="col-md-6">
-                    <?= $this->Form->control('funcionario_id', [
-                      'options' => $funcionarios,
-                      'label'=> 'Funcionário',
-                      ]);?>
-                  </div>
-                 
-              </fieldset>
+          <div class="col-md-6">
+            <?= $this->Form->control('funcionario_id', [
+              'options' => $funcionarios,
+              'label'=> 'Funcionário',
+              ]);?>
+          </div>
+            
+        </fieldset>
 
-              <fieldset>
-                  <!-- <legend><?= __('Conteúdo') ?></legend> -->
-                  <div class="col-md-12">
-                    <?= $this->Form->control('titulo', [
-                      'placeholder' => 'Informe o titulo do informe',
-                      'label'=> 'Assunto',
-                      ]); ?>
-                  </div>
+        <fieldset>
+          <div class="col-md-12">
+            <?= $this->Form->control('titulo', [
+              'placeholder' => 'Informe o titulo do informe',
+              'label'=> 'Assunto',
+              ]); ?>
+          </div>
 
-                  <div class="col-md-12 form-group">
-                    <?= $this->Form->textarea('corpo',[
-                      'placeholder' => 'Insira aqui o corpo da mensagem',
-                      'label'=> '',
-                    ]); ?>
-                  </div>
-              </fieldset>
+          <div class="col-md-12 form-group">
+            <?= $this->Form->textarea('corpo',[
+              'placeholder' => 'Insira aqui o corpo da mensagem',
+              'label'=> '',
+            ]); ?>
+          </div>
+        </fieldset>
 
-              <div class="col-md-12">
-                <?= $this->Form->button(__('Enviar')) ?>
-              </div>
+        <div class="col-md-12">
+          <?= $this->Form->button(__('Enviar')) ?>
+        </div>
 
       </div>
     </div>
   </div>
   <?= $this->Form->end() ?>
-<!-- </div> -->
+</div>
