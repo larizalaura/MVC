@@ -63,7 +63,7 @@
     </ol>
   </nav>
 
-  <?= $this->Form->create($informe) ?>
+  <?= $this->Form->create($informe, array('enctype' => 'multipart/form-data')) ?>
 
     <div class="panel panel-default">
       <div class="panel-body">
@@ -99,6 +99,8 @@
             ]); ?>
           </div>
         </fieldset>
+        
+        <?= $this->Form->control('informes_arquivos.nome'); ?>
 
         <div class="col-md-12">
           <?= $this->Form->button(__('Enviar')) ?>

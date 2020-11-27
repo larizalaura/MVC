@@ -58,21 +58,21 @@ class InformesArquivosTable extends Table
             ->scalar('nome')
             ->maxLength('nome', 45)
             ->requirePresence('nome', 'create')
-            ->notEmptyString('nome');
+            /* ->notEmptyString('nome')*/;
 
         $validator
             ->scalar('extensao')
             ->maxLength('extensao', 4)
             ->requirePresence('extensao', 'create')
-            ->notEmptyString('extensao');
+            /*>notEmptyString('extensao')*/;
 
         $validator
             ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            /*->notEmptyDateTime('data_criacao')*/;
 
         $validator
             ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            /*->notEmptyDateTime('data_modificacao')*/;
 
         $validator
             ->dateTime('data_delecao')

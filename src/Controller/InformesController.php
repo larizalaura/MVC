@@ -53,14 +53,25 @@ class InformesController extends AppController
     public function add()
     {
         $informe = $this->Informes->newEntity();
+        
         if ($this->request->is('post')) {
-            $informe = $this->Informes->patchEntity($informe, $this->request->getData());
-            if ($this->Informes->save($informe)) {
-                $this->Flash->success(__('The informe has been saved.'));
+            $informe = $this->Informes->patchEntity($informe, $this->request->getData(), [
+                'associated' => [ 'InformesArquivos' => ['validate' => false]]
+            ]);
+            
+            $informesArquivos = $this->Informes->InformesArquivos->newEntity();
+            $informesArquivos->nome = "teste 76";
+            // $this->Informes->InformesArquivos->link($informe, [$informesArquivos]);
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The informe could not be saved. Please, try again.'));
+            // var_dump($informe); 
+            // if ($this->Informes->save($informe, [
+            //     'associated' => [ 'InformesArquivos' => ['validate' => false]]
+            //     ])) {
+            //     $this->Flash->success(__('The informe has been saved.'));
+
+            //     return $this->redirect(['action' => 'index']);
+            // }
+            // $this->Flash->error(__('The informe could not be saved. Please, try again.'));
         }
 
         $responsaveis = $this->Informes->Usuarios->find('ownedByResponsaveis', [])->map(function ($value, $key) {
