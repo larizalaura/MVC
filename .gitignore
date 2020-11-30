@@ -5,7 +5,7 @@ syntax: glob
 /logs/*
 tmp/*
 logs/*
-config/app.php
+config/app.default.php
 
 /tmp/cache/models/*
 !/tmp/cache/models/empty

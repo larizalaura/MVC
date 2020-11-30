@@ -46,6 +46,10 @@ use Cake\Core\Plugin;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
+    $routes->scope('/', function(RouteBuilder $routes){
+        $routes->setExtensions(['json', 'xml']);
+    });
+    
     // Register scoped middleware for in scopes.
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httpOnly' => true
@@ -90,6 +94,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     // $routes->fallbacks(DashedRoute::class);
     $routes->fallbacks('InflectedRoute');
+
+    
+    
+
+
+
 });
 
 /**

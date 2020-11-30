@@ -20,7 +20,7 @@ class ResponsaveisController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Usuarios']
+            'contain' => ['Enderecos', 'Alunos', 'Telefones']
         ];
         $responsaveis = $this->paginate($this->Responsaveis);
 
@@ -37,7 +37,7 @@ class ResponsaveisController extends AppController
     public function view($id = null)
     {
         $responsavei = $this->Responsaveis->get($id, [
-            'contain' => ['Usuarios']
+            'contain' => ['Enderecos', 'Alunos', 'Telefones']
         ]);
 
         $this->set('responsavei', $responsavei);
@@ -60,8 +60,10 @@ class ResponsaveisController extends AppController
             }
             $this->Flash->error(__('The responsavei could not be saved. Please, try again.'));
         }
-        $usuarios = $this->Responsaveis->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('responsavei', 'usuarios'));
+        $enderecos = $this->Responsaveis->Enderecos->find('list', ['limit' => 200]);
+        $alunos = $this->Responsaveis->Alunos->find('list', ['limit' => 200]);
+        $telefones = $this->Responsaveis->Telefones->find('list', ['limit' => 200]);
+        $this->set(compact('responsavei', 'enderecos', 'alunos', 'telefones'));
     }
 
     /**
@@ -85,8 +87,10 @@ class ResponsaveisController extends AppController
             }
             $this->Flash->error(__('The responsavei could not be saved. Please, try again.'));
         }
-        $usuarios = $this->Responsaveis->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('responsavei', 'usuarios'));
+        $enderecos = $this->Responsaveis->Enderecos->find('list', ['limit' => 200]);
+        $alunos = $this->Responsaveis->Alunos->find('list', ['limit' => 200]);
+        $telefones = $this->Responsaveis->Telefones->find('list', ['limit' => 200]);
+        $this->set(compact('responsavei', 'enderecos', 'alunos', 'telefones'));
     }
 
     /**

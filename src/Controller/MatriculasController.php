@@ -108,21 +108,4 @@ class MatriculasController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-    public function listar_matriculados(){
-        $query = $this->Matriculas->find();
-
-        $query->select(['id' => 'Matriculas.id',
-                        'matricula_ativa' => 'Matriculas.matricula_ativa', 
-                        'aluno_id' => 'Alunos.id',
-                        'nome' => 'Alunos.nome',
-                        'sexo' => 'Alunos.sexo',
-                        'data_nasc' => 'Alunos.data_nasc',
-                        'ano_matricula' => 'Matriculas.ano_matricula'
-                        ])
-              ->innerJoinWith('Alunos');
-        
-
-        $this->set('matriculas', $query);
-    }
 }
