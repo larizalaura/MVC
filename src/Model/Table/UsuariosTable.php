@@ -34,17 +34,17 @@ class UsuariosTable extends Table
         $this->setDisplayField('nome');
         $this->setPrimaryKey('id');
 
-        $this->hasOne('Responsaveis');
+        $this->hasOne('Funcionarios');
     }
 
     public function findOwnedByResponsaveis(Query $query, array $options)
     {
-        return $query->contain(['Responsaveis'])->where(['responsaveis.id is not null'])->select(['Usuarios.id','Usuarios.nome']);
+        return $query->contain(['Funcionarios'])->where(['funcionarios.id is null'])->select(['Usuarios.id','Usuarios.nome']);
     }
 
     public function findOwnedByFuncionarios(Query $query, array $options)
     {
-        return $query->contain(['Responsaveis'])->where(['responsaveis.id is null'])->select(['Usuarios.id','Usuarios.nome']);
+        return $query->contain(['Funcionarios'])->where(['funcionarios.id is not null'])->select(['Usuarios.id','Usuarios.nome']);
     }
 
     /**
