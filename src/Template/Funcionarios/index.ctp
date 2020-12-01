@@ -10,8 +10,8 @@
         <li><?= $this->Html->link(__('New Funcionario'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Enderecos'), ['controller' => 'Enderecos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Endereco'), ['controller' => 'Enderecos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Telefones'), ['controller' => 'Telefones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Telefone'), ['controller' => 'Telefones', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Informes'), ['controller' => 'Informes', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Informe'), ['controller' => 'Informes', 'action' => 'add']) ?></li>
     </ul>
@@ -24,12 +24,10 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nome') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_nasc') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('parentesco') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('cpf') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('rg') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('profissao') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('endereco_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefone_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('usuario_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_criacao') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_modificacao') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_delecao') ?></th>
@@ -42,12 +40,10 @@
                 <td><?= $this->Number->format($funcionario->id) ?></td>
                 <td><?= h($funcionario->nome) ?></td>
                 <td><?= h($funcionario->data_nasc) ?></td>
-                <td><?= h($funcionario->parentesco) ?></td>
                 <td><?= h($funcionario->cpf) ?></td>
                 <td><?= h($funcionario->rg) ?></td>
-                <td><?= h($funcionario->profissao) ?></td>
                 <td><?= $funcionario->has('endereco') ? $this->Html->link($funcionario->endereco->id, ['controller' => 'Enderecos', 'action' => 'view', $funcionario->endereco->id]) : '' ?></td>
-                <td><?= $funcionario->has('telefone') ? $this->Html->link($funcionario->telefone->id, ['controller' => 'Telefones', 'action' => 'view', $funcionario->telefone->id]) : '' ?></td>
+                <td><?= $funcionario->has('usuario') ? $this->Html->link($funcionario->usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $funcionario->usuario->id]) : '' ?></td>
                 <td><?= h($funcionario->data_criacao) ?></td>
                 <td><?= h($funcionario->data_modificacao) ?></td>
                 <td><?= h($funcionario->data_delecao) ?></td>

@@ -20,7 +20,7 @@ class FuncionariosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Enderecos', 'Telefones']
+            'contain' => ['Enderecos', 'Usuarios']
         ];
         $funcionarios = $this->paginate($this->Funcionarios);
 
@@ -37,7 +37,7 @@ class FuncionariosController extends AppController
     public function view($id = null)
     {
         $funcionario = $this->Funcionarios->get($id, [
-            'contain' => ['Enderecos', 'Telefones', 'Informes']
+            'contain' => ['Enderecos', 'Usuarios', 'Informes']
         ]);
 
         $this->set('funcionario', $funcionario);
@@ -61,8 +61,8 @@ class FuncionariosController extends AppController
             $this->Flash->error(__('The funcionario could not be saved. Please, try again.'));
         }
         $enderecos = $this->Funcionarios->Enderecos->find('list', ['limit' => 200]);
-        $telefones = $this->Funcionarios->Telefones->find('list', ['limit' => 200]);
-        $this->set(compact('funcionario', 'enderecos', 'telefones'));
+        $usuarios = $this->Funcionarios->Usuarios->find('list', ['limit' => 200]);
+        $this->set(compact('funcionario', 'enderecos', 'usuarios'));
     }
 
     /**
@@ -87,8 +87,8 @@ class FuncionariosController extends AppController
             $this->Flash->error(__('The funcionario could not be saved. Please, try again.'));
         }
         $enderecos = $this->Funcionarios->Enderecos->find('list', ['limit' => 200]);
-        $telefones = $this->Funcionarios->Telefones->find('list', ['limit' => 200]);
-        $this->set(compact('funcionario', 'enderecos', 'telefones'));
+        $usuarios = $this->Funcionarios->Usuarios->find('list', ['limit' => 200]);
+        $this->set(compact('funcionario', 'enderecos', 'usuarios'));
     }
 
     /**

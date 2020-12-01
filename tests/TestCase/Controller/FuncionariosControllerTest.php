@@ -20,7 +20,7 @@ class FuncionariosControllerTest extends TestCase
     public $fixtures = [
         'app.Funcionarios',
         'app.Enderecos',
-        'app.Telefones',
+        'app.Usuarios',
         'app.Informes'
     ];
 

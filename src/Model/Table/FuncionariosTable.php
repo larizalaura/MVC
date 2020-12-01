@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * Funcionarios Model
  *
  * @property \App\Model\Table\EnderecosTable|\Cake\ORM\Association\BelongsTo $Enderecos
- * @property \App\Model\Table\TelefonesTable|\Cake\ORM\Association\BelongsTo $Telefones
+ * @property |\Cake\ORM\Association\BelongsTo $Usuarios
  * @property \App\Model\Table\InformesTable|\Cake\ORM\Association\HasMany $Informes
  *
  * @method \App\Model\Entity\Funcionario get($primaryKey, $options = [])
@@ -42,8 +42,8 @@ class FuncionariosTable extends Table
             'foreignKey' => 'endereco_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Telefones', [
-            'foreignKey' => 'telefone_id',
+        $this->belongsTo('Usuarios', [
+            'foreignKey' => 'usuario_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Informes', [
@@ -75,12 +75,6 @@ class FuncionariosTable extends Table
             ->notEmptyDate('data_nasc');
 
         $validator
-            ->scalar('parentesco')
-            ->maxLength('parentesco', 100)
-            ->requirePresence('parentesco', 'create')
-            ->notEmptyString('parentesco');
-
-        $validator
             ->scalar('cpf')
             ->maxLength('cpf', 16)
             ->requirePresence('cpf', 'create')
@@ -91,12 +85,6 @@ class FuncionariosTable extends Table
             ->maxLength('rg', 16)
             ->requirePresence('rg', 'create')
             ->notEmptyString('rg');
-
-        $validator
-            ->scalar('profissao')
-            ->maxLength('profissao', 100)
-            ->requirePresence('profissao', 'create')
-            ->notEmptyString('profissao');
 
         $validator
             ->dateTime('data_criacao')
@@ -123,7 +111,7 @@ class FuncionariosTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['endereco_id'], 'Enderecos'));
-        $rules->add($rules->existsIn(['telefone_id'], 'Telefones'));
+        $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
 
         return $rules;
     }

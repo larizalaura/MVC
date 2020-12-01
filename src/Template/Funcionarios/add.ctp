@@ -10,8 +10,8 @@
         <li><?= $this->Html->link(__('List Funcionarios'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Enderecos'), ['controller' => 'Enderecos', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Endereco'), ['controller' => 'Enderecos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Telefones'), ['controller' => 'Telefones', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Telefone'), ['controller' => 'Telefones', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Informes'), ['controller' => 'Informes', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Informe'), ['controller' => 'Informes', 'action' => 'add']) ?></li>
     </ul>
@@ -23,12 +23,10 @@
         <?php
             echo $this->Form->control('nome');
             echo $this->Form->control('data_nasc');
-            echo $this->Form->control('parentesco');
             echo $this->Form->control('cpf');
             echo $this->Form->control('rg');
-            echo $this->Form->control('profissao');
             echo $this->Form->control('endereco_id', ['options' => $enderecos]);
-            echo $this->Form->control('telefone_id', ['options' => $telefones]);
+            echo $this->Form->control('usuario_id', ['options' => $usuarios]);
             echo $this->Form->control('data_criacao');
             echo $this->Form->control('data_modificacao');
             echo $this->Form->control('data_delecao', ['empty' => true]);

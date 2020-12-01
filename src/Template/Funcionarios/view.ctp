@@ -13,8 +13,8 @@
         <li><?= $this->Html->link(__('New Funcionario'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Enderecos'), ['controller' => 'Enderecos', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Endereco'), ['controller' => 'Enderecos', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Telefones'), ['controller' => 'Telefones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Telefone'), ['controller' => 'Telefones', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Informes'), ['controller' => 'Informes', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Informe'), ['controller' => 'Informes', 'action' => 'add']) ?> </li>
     </ul>
@@ -27,10 +27,6 @@
             <td><?= h($funcionario->nome) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Parentesco') ?></th>
-            <td><?= h($funcionario->parentesco) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Cpf') ?></th>
             <td><?= h($funcionario->cpf) ?></td>
         </tr>
@@ -39,16 +35,12 @@
             <td><?= h($funcionario->rg) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Profissao') ?></th>
-            <td><?= h($funcionario->profissao) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Endereco') ?></th>
             <td><?= $funcionario->has('endereco') ? $this->Html->link($funcionario->endereco->id, ['controller' => 'Enderecos', 'action' => 'view', $funcionario->endereco->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Telefone') ?></th>
-            <td><?= $funcionario->has('telefone') ? $this->Html->link($funcionario->telefone->id, ['controller' => 'Telefones', 'action' => 'view', $funcionario->telefone->id]) : '' ?></td>
+            <th scope="row"><?= __('Usuario') ?></th>
+            <td><?= $funcionario->has('usuario') ? $this->Html->link($funcionario->usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $funcionario->usuario->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
