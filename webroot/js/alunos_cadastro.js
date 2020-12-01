@@ -31,7 +31,7 @@ $( document ).ready(function() {
             };
             },
             processResults: function (data, params) {
-            var nomes = data.alunos.map( item => { return {id: item['id'], text: item['nome']}});
+            var nomes = data.matriculados.map( item => { return {id: item['id'], text: item['nome']}});
                         return {
                             results: nomes,
                         }

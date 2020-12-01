@@ -3,6 +3,7 @@ use Migrations\AbstractMigration;
 use Phinx\Db\Adapter\MysqlAdapter;
 require_once 'MigrationUtils.php';
 
+define('DEVELOPMENT',false);
 
 class CreateTelefones extends AbstractMigration
 {
@@ -10,10 +11,8 @@ class CreateTelefones extends AbstractMigration
     {
         $telefone = $this->table('telefones');
         $telefone
-            ->addColumn('numero','integer',['limit'=>13])
-
-            ->addColumn('responsavel_id', 'integer', ['limit'=> 10])
-            ->addForeignKey('responsavel_id','responsaveis','id')
+            ->addColumn('numero','string',['limit'=>20])
+            ->addColumn('tipo','string',['limit'=>50])
             ->create();
     }
 

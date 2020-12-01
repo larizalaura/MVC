@@ -3,9 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Aluno $aluno
  */
-
 $this->layout = 'creche/layout_creche'
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -38,6 +36,10 @@ $this->layout = 'creche/layout_creche'
             <td><?= $this->Number->format($aluno->id) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Endereco Id') ?></th>
+            <td><?= $this->Number->format($aluno->endereco_id) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Data Nasc') ?></th>
             <td><?= h($aluno->data_nasc) ?></td>
         </tr>
@@ -60,9 +62,10 @@ $this->layout = 'creche/layout_creche'
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Matricula Ativa') ?></th>
                 <th scope="col"><?= __('Aluno Id') ?></th>
-                <th scope="col"><?= __('Ano Matricula') ?></th>
+                <th scope="col"><?= __('Tipo Vaga') ?></th>
+                <th scope="col"><?= __('Data Matricula') ?></th>
+                <th scope="col"><?= __('Matricula Ativa') ?></th>
                 <th scope="col"><?= __('Data Criacao') ?></th>
                 <th scope="col"><?= __('Data Modificacao') ?></th>
                 <th scope="col"><?= __('Data Delecao') ?></th>
@@ -71,9 +74,10 @@ $this->layout = 'creche/layout_creche'
             <?php foreach ($aluno->matriculas as $matriculas): ?>
             <tr>
                 <td><?= h($matriculas->id) ?></td>
-                <td><?= h($matriculas->matricula_ativa) ?></td>
                 <td><?= h($matriculas->aluno_id) ?></td>
-                <td><?= h($matriculas->ano_matricula) ?></td>
+                <td><?= h($matriculas->tipo_vaga) ?></td>
+                <td><?= h($matriculas->data_matricula) ?></td>
+                <td><?= h($matriculas->matricula_ativa) ?></td>
                 <td><?= h($matriculas->data_criacao) ?></td>
                 <td><?= h($matriculas->data_modificacao) ?></td>
                 <td><?= h($matriculas->data_delecao) ?></td>

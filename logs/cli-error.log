@@ -741,3 +741,50 @@ Stack Trace:
 #19 {main}
 
 
+2020-11-22 21:42:54 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'creche.responsaveisalunos' doesn't exist in C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 133
+Stack Trace:
+#0 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'responsaveisalu...', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('responsaveisalu...', Array)
+#2 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('responsaveisalu...')
+#3 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\ORM\Table.php(685): Cake\ORM\Table->getSchema()
+#4 C:\wamp64\www\MVC\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(288): Cake\ORM\Table->getPrimaryKey()
+#5 C:\wamp64\www\MVC\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(142): Bake\Shell\Task\TemplateTask->_loadController()
+#6 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\TemplateTask->main('Responsaveisalu...')
+#7 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#8 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#9 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#10 C:\wamp64\www\MVC\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#11 {main}
+
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'creche.responsaveisalunos' doesn't exist in C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query('SHOW FULL COLUM...')
+#5 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(131): Cake\Database\Connection->execute('SHOW FULL COLUM...', Array)
+#8 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(99): Cake\Database\Schema\Collection->_reflect('Column', 'responsaveisalu...', Array, Object(Cake\Database\Schema\TableSchema))
+#9 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('responsaveisalu...', Array)
+#10 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\ORM\Table.php(560): Cake\Database\Schema\CachedCollection->describe('responsaveisalu...')
+#11 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\ORM\Table.php(685): Cake\ORM\Table->getSchema()
+#12 C:\wamp64\www\MVC\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(288): Cake\ORM\Table->getPrimaryKey()
+#13 C:\wamp64\www\MVC\vendor\cakephp\bake\src\Shell\Task\TemplateTask.php(142): Bake\Shell\Task\TemplateTask->_loadController()
+#14 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\TemplateTask->main('Responsaveisalu...')
+#15 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#16 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#17 C:\wamp64\www\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#18 C:\wamp64\www\MVC\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#19 {main}
+
+
+2020-11-28 20:01:54 Error: [RuntimeException] Unknown command `cake controller`. Run `cake --help` to get the list of valid commands. in /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
+Stack Trace:
+#0 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'controller')
+#1 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+

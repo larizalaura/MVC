@@ -110,4 +110,38 @@ class MatriculadosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function get_matriculado(){
+        
+        $query = $this->Matriculados->find();
+
+        // if($this->request->getParam('parametro')){
+        //     $dados = $this->request->getData('parametro');
+
+        //     $query->where(['Matriculados.matricula_id'=>$dados]);
+        // }
+
+        $dados = $this->request->getParam('parametro');
+
+        $query->where(['Matriculados.matricula_id'=>$dados]);
+
+        $res = $this->paginate($query);
+
+        $this->set('res', $res);
+        // $teste = "teste";
+        $this->set('_serialize', 'res');
+
+        // $alunos = $this->getTableLocator()->get('Alunos');
+        // $query = $alunos->find();
+
+        // if($this->request->getQuery('q')){
+        //     $q = $this->request->getQuery('q');
+        //     $query->where(['Alunos.nome LIKE ' => '%'.$q.'%']);
+        // }
+
+        // $alunos = $this->paginate($query);
+
+        // $this->set('alunos', $alunos);
+        // $this->set('_serialize', ['alunos']);
+    }
 }

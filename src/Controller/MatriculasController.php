@@ -53,6 +53,7 @@ class MatriculasController extends AppController
         $matricula = $this->Matriculas->newEntity();
         if ($this->request->is('post')) {
             $matricula = $this->Matriculas->patchEntity($matricula, $this->request->getData());
+            $matricula->aluno_id = $this->request->getData('pesquisar');
             if ($this->Matriculas->save($matricula)) {
                 $this->Flash->success(__('The matricula has been saved.'));
 
@@ -109,6 +110,21 @@ class MatriculasController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function get_aluno(){
+        $alunos = $this->getTableLocator()->get('Alunos');
+        $query = $alunos->find();
+
+        if($this->request->getQuery('q')){
+            $q = $this->request->getQuery('q');
+            $query->where(['Alunos.nome LIKE ' => '%'.$q.'%']);
+        }
+
+        $alunos = $this->paginate($query);
+
+        $this->set('alunos', $alunos);
+        $this->set('_serialize', ['alunos']);
+    }
+
     public function listar_matriculados(){
         $query = $this->Matriculas->find();
 
@@ -118,10 +134,10 @@ class MatriculasController extends AppController
                         'nome' => 'Alunos.nome',
                         'sexo' => 'Alunos.sexo',
                         'data_nasc' => 'Alunos.data_nasc',
-                        'ano_matricula' => 'Matriculas.ano_matricula'
+                        'ano_matricula' => 'Matriculas.data_matricula'
                         ])
               ->innerJoinWith('Alunos');
-        
+
 
         $this->set('matriculas', $query);
     }

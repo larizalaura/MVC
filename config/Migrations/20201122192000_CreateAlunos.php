@@ -5,35 +5,34 @@ require_once 'MigrationUtils.php';
 
 define('DEVELOPMENT',true);
 
-
-class CreateMatriculas extends AbstractMigration
+class CreateAlunos extends AbstractMigration
 {
     public function up()
     {
-        $matricula = $this->table('matriculas');
-        $matricula
-            ->addColumn('matricula_ativa', 'boolean')
-            ->addColumn('aluno_id', 'integer', ['limit'=>10])
-            ->addForeignKey('aluno_id', 'alunos', 'id')
-            ->addColumn('ano_matricula', 'integer', ['limit'=>4])
+        $aluno = $this->table('alunos');
+        $aluno
+            ->addColumn('nome','string',['limit'=>100])
+            ->addColumn('data_nasc','date')
+            ->addColumn('sexo','string',['limit'=>1])
+            ->addColumn('endereco_id', 'integer', ['limit'=>10, 'null' => true])
+            ->addForeignKey('endereco_id', 'enderecos', 'id')
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
-            ->addColumn('responsaveis_id', 'integer', ['limit'=>10])
-            ->addForeignKey('responsaveis_id', 'responsaveis', 'id')
             ->create();
+        
     }
 
     public function down()
     {
         if(DEVELOPMENT){
-            $tableNames = ['matriculas'];
+            $tableNames = ['alunos'];
             $util = new MigrationUtils();
             $util->checkDropAll($this,$tableNames);
         } else {
             print("Nao eh possivel deletar as tabelas arquivos. DEVELOPMENT: false");
             throw new Exception("Impossivel Reversao");
         }
-    
+        
     }
 }

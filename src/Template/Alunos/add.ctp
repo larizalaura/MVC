@@ -19,8 +19,16 @@ $this->layout = 'creche/layout_creche'?>
         <?php
             echo $this->Form->control('nome');
             echo $this->Form->control('data_nasc');
-            echo $this->Form->control('telefone');
             echo $this->Form->control('sexo');
+        ?>
+        <legend><?= __('Adicionar Endereco') ?></legend>
+        <?php
+            echo $this->Form->control('rua');
+            echo $this->Form->control('numero');
+            echo $this->Form->control('cep');
+            echo $this->Form->control('bairro');
+            echo $this->Form->control('cidade');
+            echo $this->Form->control('estado');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Adicionar')) ?>

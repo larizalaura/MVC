@@ -3,21 +3,21 @@ use Migrations\AbstractMigration;
 use Phinx\Db\Adapter\MysqlAdapter;
 require_once 'MigrationUtils.php';
 
-define('DEVELOPMENT',true);
+define('DEVELOPMENT',false);
 
-class CreateAlunos extends AbstractMigration
+class CreateMatriculados extends AbstractMigration
 {
     public function up()
     {
-        $aluno = $this->table('alunos');
-        $aluno
-            ->addColumn('nome','string',['limit'=>100])
-            ->addColumn('data_nasc','date')
-            ->addColumn('telefone','string',['limit'=>100])
-            ->addColumn('sexo','string',['limit'=>1])
+        $matriculado = $this->table('matriculados');
+        $matriculado   
+            ->addColumn('matricula_id', 'integer', ['limit'=>10, 'null'=>true])
+            ->addColumn('turmas_id', 'integer', ['limit'=>10])
             ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
             ->addColumn('data_delecao','datetime',['null'=>true])
+            ->addForeignKey('matricula_id', 'matriculas', 'id')
+            ->addForeignKey('turmas_id', 'turmas', 'id')
             ->create();
         
     }
@@ -25,7 +25,7 @@ class CreateAlunos extends AbstractMigration
     public function down()
     {
         if(DEVELOPMENT){
-            $tableNames = ['alunos'];
+            $tableNames = ['matriculados'];
             $util = new MigrationUtils();
             $util->checkDropAll($this,$tableNames);
         } else {

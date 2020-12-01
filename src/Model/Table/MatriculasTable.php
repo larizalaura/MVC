@@ -63,14 +63,20 @@ class MatriculasTable extends Table
             ->allowEmptyString('id', 'create');
 
         $validator
+            ->scalar('tipo_vaga')
+            ->maxLength('tipo_vaga', 50)
+            ->requirePresence('tipo_vaga', 'create');
+            //->notEmptyString('tipo_vaga');
+
+        $validator
+            ->date('data_matricula')
+            ->requirePresence('data_matricula', 'create');
+            //->notEmptyDate('data_matricula');
+
+        $validator
             ->boolean('matricula_ativa')
             ->requirePresence('matricula_ativa', 'create');
             //->notEmptyString('matricula_ativa');
-
-        $validator
-            ->integer('ano_matricula')
-            ->requirePresence('ano_matricula', 'create');
-            //->notEmptyString('ano_matricula');
 
         $validator
             ->dateTime('data_criacao');

@@ -5,27 +5,27 @@ require_once 'MigrationUtils.php';
 
 define('DEVELOPMENT', false);
 
-class CreateResponsaveis extends AbstractMigration
+class CreateResponsavel extends AbstractMigration
 {
     public function up()
     {
-        $responsavel = $this->table('responsaveis');
+        $responsavel = $this->table('responsavel');
         $responsavel
         ->addColumn('nome', 'string', ['limit'=> 100])
-        ->addColumn('data_nasc','datetime',['default'=>'CURRENT_TIMESTAMP'])
+        ->addColumn('data_nasc','date')
         ->addColumn('parentesco', 'string', ['limit'=>100])
         ->addColumn('cpf', 'string', ['limit'=>16])
         ->addColumn('rg', 'string', ['limit'=>16])
         ->addColumn('profissao', 'string', ['limit'=>100])
         ->addColumn('email', 'string', ['limit'=>100])
+        ->addColumn('endereco_id', 'integer', ['limit'=>10, 'null'=>true])
+        ->addForeignKey('endereco_id', 'enderecos', 'id')
+        ->addColumn('telefone_id', 'integer', ['limit'=>10, 'null'=>true])
+        ->addForeignKey('telefone_id', 'telefones', 'id')
 
-
-        ->addColumn('aluno_id', 'integer', ['limit'=> 10])
-        ->addColumn('usuario_id', 'integer', ['limit'=> 10])
         ->addColumn('data_criacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
         ->addColumn('data_modificacao','datetime',['default'=>'CURRENT_TIMESTAMP'])
         ->addColumn('data_delecao','datetime',['null'=>true])
-        ->addForeignKey('usuario_id', 'usuarios', 'id', [])
         ->create();
        
     }
@@ -34,7 +34,7 @@ class CreateResponsaveis extends AbstractMigration
     {
 
         if(DEVELOPMENT){
-            $tableNames = ['responsaveis'];
+            $tableNames = ['responsavel'];
             $util = new MigrationUtils();
             $util->checkDropAll($this,$tableNames);
         } else {

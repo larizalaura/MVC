@@ -11,7 +11,6 @@ $this->layout = 'creche/layout_creche'?>
   <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
   <?= $this->Html->script('alunos_cadastro.js') ?>
 <?php $this->end(); ?>
-
 <?php $this->start('css'); ?>
   <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
   <?= $this->Html->css('/bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css') ?>
@@ -44,7 +43,6 @@ $this->layout = 'creche/layout_creche'?>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nome') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_nasc') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sexo') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -56,7 +54,6 @@ $this->layout = 'creche/layout_creche'?>
                 <td><?= $this->Number->format($aluno->id) ?></td>
                 <td><?= h($aluno->nome) ?></td>
                 <td><?= h($aluno->data_nasc) ?></td>
-                <td><?= h($aluno->telefone) ?></td>
                 <td><?= h($aluno->sexo) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $aluno->id]) ?>
@@ -66,7 +63,6 @@ $this->layout = 'creche/layout_creche'?>
             </tr>
             <?php endforeach; ?>
         </tbody>
-        </div>
     </table>
     <div class="paginator">
         <ul class="pagination">
@@ -77,5 +73,6 @@ $this->layout = 'creche/layout_creche'?>
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} totais')]) ?></p>
+    </div>
     </div>
 </div>

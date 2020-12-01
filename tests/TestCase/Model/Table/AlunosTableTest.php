@@ -24,7 +24,9 @@ class AlunosTableTest extends TestCase
      */
     public $fixtures = [
         'app.Alunos',
-        'app.Matriculas'
+        'app.Enderecos',
+        'app.Matriculas',
+        'app.Responsavelaluno'
     ];
 
     /**
@@ -67,6 +69,16 @@ class AlunosTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

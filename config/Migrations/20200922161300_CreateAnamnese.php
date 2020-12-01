@@ -3,7 +3,7 @@ use Migrations\AbstractMigration;
 use Phinx\Db\Adapter\MysqlAdapter;
 require_once 'MigrationUtils.php';
 
-
+define('DEVELOPMENT',false);
 
 class CreateAnamnese extends AbstractMigration
 {

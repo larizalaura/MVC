@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Controller\Component\RequestHandlerComponent;
+use App\Model\Entity\Endereco;
 
 /**
  * Alunos Controller
@@ -27,7 +27,7 @@ class AlunosController extends AppController
         }else{
             $alunos = $this->paginate($this->Alunos);
 
-            $this->set(compact('alunos'));
+            $this->set(compact('alunos'));          
         }
     }
 
@@ -55,11 +55,24 @@ class AlunosController extends AppController
     public function add()
     {
         $aluno = $this->Alunos->newEntity();
-        if ($this->request->is('post')) {
-            $aluno = $this->Alunos->patchEntity($aluno, $this->request->getData());
-            if ($this->Alunos->save($aluno)) {
-                $this->Flash->success(__('The aluno has been saved.'));
+        // Carregando a entidade de enderecos e criando uma nova instancia
+        $this->loadModel('Enderecos');
+        $endereco = $this->Enderecos->newEntity();
 
+        if ($this->request->is('post')) {
+            // Recebendo os dados por post de cada atributo de endereco
+            $endereco->rua = $this->request->getData('rua');
+            $endereco->cep = (int) $this->request->getData('cep');
+            $endereco->numero = (int) $this->request->getData('numero');
+            $endereco->bairro = $this->request->getData('bairro');
+            $endereco->cidade = $this->request->getData('cidade');
+            $endereco->estado = $this->request->getData('estado');
+            //
+            $aluno = $this->Alunos->patchEntity($aluno, $this->request->getData());
+            
+            if ($this->Alunos->save($aluno) && $this->Enderecos->save($endereco)) {
+                $this->Flash->success(__('Aluno foi adicionado.'));
+                $this->adiciona_novo_endereco_a_novo_aluno();
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The aluno could not be saved. Please, try again.'));
@@ -130,6 +143,38 @@ class AlunosController extends AppController
         $alunos = $this->paginate($this->Alunos);
 
         $this->set(compact('alunos'));        
-    }    
+    }
+
+    private function adiciona_novo_endereco_a_novo_aluno(){
+        // Carrego a entidade de endereços
+        $this->loadModel('Enderecos');
+
+        // Crios as querys
+        $query_enderecos = $this->Enderecos->find();
+        $query_alunos = $this->Alunos->find();
+
+        // Seleciono o último dado inserido
+        $query_alunos = $query_alunos->select(['id'])
+            ->order(['id'=>'DESC'])
+            ->limit(1);
+        $query_enderecos = $query_enderecos->select(['id'])
+            ->order(['id'=>'DESC'])
+            ->limit(1);
+        
+        // Itero pra pegar apenas o valor desejado
+        // Último dado inserido de aluno
+        foreach ($query_alunos as $last_row_alunos){
+            $id_ultimo_aluno = $last_row_alunos->id;
+        };
+        // Último dado inserido de endereço
+        foreach ($query_enderecos as $last_row_enderecos){
+            $id_ultimo_endereco = $last_row_enderecos->id;
+        };
+        // Insiro no campo estrangeiro de aluno o id do endereço
+        $query_alunos->update()
+                      ->set(['endereco_id'=>$id_ultimo_endereco])
+                      ->where(['id' => $id_ultimo_aluno])
+                      ->execute();
+    }
 
 }

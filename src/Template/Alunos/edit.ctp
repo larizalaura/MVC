@@ -3,9 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Aluno $aluno
  */
-
 $this->layout = 'creche/layout_creche'
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -30,6 +28,7 @@ $this->layout = 'creche/layout_creche'
             echo $this->Form->control('data_nasc');
             echo $this->Form->control('telefone');
             echo $this->Form->control('sexo');
+            echo $this->Form->control('endereco_id');
             echo $this->Form->control('data_criacao');
             echo $this->Form->control('data_modificacao');
             echo $this->Form->control('data_delecao', ['empty' => true]);
