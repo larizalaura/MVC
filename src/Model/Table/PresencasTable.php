@@ -9,8 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Presencas Model
  *
- * @property \App\Model\Table\MatriculasTable|\Cake\ORM\Association\BelongsTo $Matriculas
- * @property \App\Model\Table\TurmasTable|\Cake\ORM\Association\BelongsTo $Turmas
+ * @property |\Cake\ORM\Association\BelongsTo $Matriculados
  *
  * @method \App\Model\Entity\Presenca get($primaryKey, $options = [])
  * @method \App\Model\Entity\Presenca newEntity($data = null, array $options = [])
@@ -37,12 +36,8 @@ class PresencasTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Matriculas', [
-            'foreignKey' => 'matricula_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Turmas', [
-            'foreignKey' => 'turma_id',
+        $this->belongsTo('Matriculados', [
+            'foreignKey' => 'matriculado_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -56,13 +51,8 @@ class PresencasTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmptyString('id', 'create');
-
-        $validator
             ->date('data_aula')
-            ->requirePresence('data_aula', 'create');
-            //->notEmptyDate('data_aula');
+            ->allowEmptyDate('data_aula', 'create');
 
         $validator
             ->boolean('presente')
@@ -93,8 +83,7 @@ class PresencasTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['matricula_id'], 'Matriculas'));
-        $rules->add($rules->existsIn(['turma_id'], 'Turmas'));
+        $rules->add($rules->existsIn(['matriculado_id'], 'Matriculados'));
 
         return $rules;
     }

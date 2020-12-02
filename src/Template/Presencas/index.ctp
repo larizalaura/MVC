@@ -3,37 +3,38 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Presenca[]|\Cake\Collection\CollectionInterface $presencas
  */
-
-$this->layout = 'creche/layout_creche'
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Nova Presenca'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Presenca'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Matriculados'), ['controller' => 'Matriculados', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Matriculado'), ['controller' => 'Matriculados', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="panel panel-primary">
-    <div class="panel-heading"><h3><?= __('Presencas') ?></h3></div>
-    <table class="table">
+<div class="presencas index large-9 medium-8 columns content">
+    <h3><?= __('Presencas') ?></h3>
+    <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('matricula_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('turma_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('matriculado_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('data_aula') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('presente') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_criacao') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_modificacao') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('data_delecao') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($presencas as $presenca): ?>
             <tr>
-                <td><?= $this->Number->format($presenca->id) ?></td>
-                <td><?= $presenca->has('matricula') ? $this->Html->link($presenca->matricula->id, ['controller' => 'Matriculas', 'action' => 'view', $presenca->matricula->id]) : '' ?></td>
-                <td><?= $presenca->has('turma') ? $this->Html->link($presenca->turma->id, ['controller' => 'Turmas', 'action' => 'view', $presenca->turma->id]) : '' ?></td>
+                <td><?= $presenca->has('matriculado') ? $this->Html->link($presenca->matriculado->id, ['controller' => 'Matriculados', 'action' => 'view', $presenca->matriculado->id]) : '' ?></td>
                 <td><?= h($presenca->data_aula) ?></td>
                 <td><?= h($presenca->presente) ?></td>
+                <td><?= h($presenca->data_criacao) ?></td>
+                <td><?= h($presenca->data_modificacao) ?></td>
+                <td><?= h($presenca->data_delecao) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $presenca->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $presenca->id]) ?>
