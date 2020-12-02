@@ -67,12 +67,12 @@
         <div class="panel-body">
             <table class="vertical-table" style="min-width: 400px;">
                 <tr>
-                    <th scope="row"><?= __('Usuario') ?>:</th>
-                    <td><?= $informe->has('usuario') ? $this->Html->link($informe->usuario->id, ['controller' => 'Usuarios', 'action' => 'view', $informe->usuario->id]) : '' ?></td>
+                    <th scope="row"><?= __('Responsavel') ?>:</th>
+                    <td><?= $informe->has('funcionarios_usuario') ?$this->Html->link($informe->funcionarios_usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $informe->funcionario_id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th scope="row"><?= __('Funcionario Id') ?>:</th>
-                    <td><?= $this->Number->format($informe->funcionario_id) ?></td>
+                    <th scope="row"><?= __('Funcionario') ?>:</th>
+                    <td><?= $informe->has('responsaveis_usuario') ? $this->Html->link($informe->responsaveis_usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $informe->responsavel_id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th scope="row"><?= __('Titulo') ?>:</th>

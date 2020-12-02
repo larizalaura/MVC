@@ -56,8 +56,8 @@
                     <td><?= $this->Number->format($informe->id) ?></td>
                     <td><?= h($informe->titulo) ?></td>
                     <td><?= h($informe->corpo) ?></td>
-                    <td><?= $this->Number->format($informe->funcionario_id) ?></td>
-                    <td><?= $informe->has('usuario') ? $this->Html->link($informe->usuario->id, ['controller' => 'Usuarios', 'action' => 'view', $informe->usuario->id]) : '' ?></td>
+                    <td><?= $informe->has('funcionarios_usuario') ?$this->Html->link($informe->funcionarios_usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $informe->funcionario_id]) : '' ?></td>
+                    <td><?= $informe->has('responsaveis_usuario') ? $this->Html->link($informe->responsaveis_usuario->nome, ['controller' => 'Usuarios', 'action' => 'view', $informe->responsavel_id]) : '' ?></td>
                     <td><?= h($informe->data_criacao) ?></td>
                     <td><?= h($informe->data_modificacao) ?></td>
                     <td><?= h($informe->data_delecao) ?></td>

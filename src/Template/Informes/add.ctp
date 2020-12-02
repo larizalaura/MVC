@@ -10,6 +10,7 @@
   <?= $this->Html->script('/vendor/almasaeed2010/adminlte/bower_components/inputmask/dist/inputmask/inputmask.js') ?>
   <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
   <?= $this->Html->script('/bower_components/jquery-ui-1.12.1.custom/jquery-ui.min.js') ?>
+  <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.min.js') ?>
 <?php $this->end(); ?>
 <?php $this->start('css'); ?>
   <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
@@ -19,6 +20,10 @@
 <?php $this->end(); ?>
 
 <?php $this->start('script'); ?>   
+  $(".filestyle").filestyle({
+    text: "corno",
+    btnClass: "btn-primary"
+  });
 
   $(".datemask").inputmask({
     alias: "datetime",
@@ -51,7 +56,6 @@
 <?php $this->layout = 'creche/layout_creche' ?>
 <?php $this->assign('title','Novo Informe') ?>
 
-
 <div class="informes form large-9 medium-8 columns content">
 
   <nav aria-label="breadcrumb">
@@ -83,7 +87,6 @@
           </div>
             
         </fieldset>
-
         <fieldset>
           <div class="col-md-12">
             <?= $this->Form->control('titulo', [
@@ -100,7 +103,9 @@
           </div>
         </fieldset>
         
-        <?= $this->Form->control('informes_arquivos.nome'); ?>
+        <div class="col-md-12 form-group">
+          <?= $this->Form->control('informes_arquivos.informes_arquivos'); ?>
+        </div>
 
         <div class="col-md-12">
           <?= $this->Form->button(__('Enviar')) ?>
@@ -108,6 +113,5 @@
 
       </div>
     </div>
-  </div>
   <?= $this->Form->end() ?>
 </div>

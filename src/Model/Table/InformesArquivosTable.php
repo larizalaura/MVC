@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Exception;
 
 /**
  * InformesArquivos Model
@@ -35,6 +36,13 @@ class InformesArquivosTable extends Table
         $this->setTable('informes_arquivos');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        // $this->addBehavior('Upload', [
+        //     'events' => [
+        //         'arquivo_name' => 'nome',
+        //         'diretorio' => 'upload'
+        //     ]
+        // ]);
 
         $this->belongsTo('Informes', [
             'foreignKey' => 'informe_id',

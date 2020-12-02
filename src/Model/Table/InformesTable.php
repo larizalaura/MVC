@@ -38,11 +38,13 @@ class InformesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Usuarios', [
+        $this->belongsTo('FuncionariosUsuarios', [
+            'className' => 'Usuarios',
             'foreignKey' => 'funcionario_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Usuarios', [
+        $this->belongsTo('ResponsaveisUsuarios', [
+            'className' => 'Usuarios',
             'foreignKey' => 'responsavel_id',
             'joinType' => 'INNER'
         ]);
@@ -95,8 +97,8 @@ class InformesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['funcionario_id'], 'Usuarios'));
-        $rules->add($rules->existsIn(['responsavel_id'], 'Usuarios'));
+        $rules->add($rules->existsIn(['funcionario_id'], 'FuncionariosUsuarios'));
+        $rules->add($rules->existsIn(['responsavel_id'], 'ResponsaveisUsuarios'));
 
         return $rules;
     }
