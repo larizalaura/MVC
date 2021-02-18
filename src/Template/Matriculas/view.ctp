@@ -3,9 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Matricula $matricula
  */
-
 $this->layout = 'creche/layout_creche'
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -30,12 +28,16 @@ $this->layout = 'creche/layout_creche'
             <td><?= $matricula->has('aluno') ? $this->Html->link($matricula->aluno->id, ['controller' => 'Alunos', 'action' => 'view', $matricula->aluno->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Tipo Vaga') ?></th>
+            <td><?= h($matricula->tipo_vaga) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($matricula->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Ano Matricula') ?></th>
-            <td><?= $this->Number->format($matricula->ano_matricula) ?></td>
+            <th scope="row"><?= __('Data Matricula') ?></th>
+            <td><?= h($matricula->data_matricula) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Data Criacao') ?></th>

@@ -31,7 +31,7 @@
                 <td><?= h($matricula->nome) ?></td>
                 <td><?= h($matricula->sexo) ?></td>
                 <td><?= h($matricula->data_nasc) ?></td>
-                <td><?= h($matricula->ano_matricula) ?></td>
+                <td><?= h($matricula->ano_matricula->year) ?></td>
 
                 
                 <td class="actions">

@@ -20,7 +20,7 @@ class PresencasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Matriculas', 'Turmas']
+            'contain' => ['Matriculados']
         ];
         $presencas = $this->paginate($this->Presencas);
 
@@ -37,7 +37,7 @@ class PresencasController extends AppController
     public function view($id = null)
     {
         $presenca = $this->Presencas->get($id, [
-            'contain' => ['Matriculas', 'Turmas']
+            'contain' => ['Matriculados']
         ]);
 
         $this->set('presenca', $presenca);
@@ -60,9 +60,8 @@ class PresencasController extends AppController
             }
             $this->Flash->error(__('The presenca could not be saved. Please, try again.'));
         }
-        $matriculas = $this->Presencas->Matriculas->find('list', ['limit' => 200]);
-        $turmas = $this->Presencas->Turmas->find('list', ['limit' => 200]);
-        $this->set(compact('presenca', 'matriculas', 'turmas'));
+        $matriculados = $this->Presencas->Matriculados->find('list', ['limit' => 200]);
+        $this->set(compact('presenca', 'matriculados'));
     }
 
     /**
@@ -86,9 +85,8 @@ class PresencasController extends AppController
             }
             $this->Flash->error(__('The presenca could not be saved. Please, try again.'));
         }
-        $matriculas = $this->Presencas->Matriculas->find('list', ['limit' => 200]);
-        $turmas = $this->Presencas->Turmas->find('list', ['limit' => 200]);
-        $this->set(compact('presenca', 'matriculas', 'turmas'));
+        $matriculados = $this->Presencas->Matriculados->find('list', ['limit' => 200]);
+        $this->set(compact('presenca', 'matriculados'));
     }
 
     /**

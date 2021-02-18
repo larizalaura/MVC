@@ -23,6 +23,8 @@
           <ul class="treeview-menu">
             <li><?= $this->Html->link('Novo aluno',['controller'=>'alunos','action'=>'add']); ?></li>
             <li><?= $this->Html->link('Listagem de Alunos',['controller'=>'alunos','action'=>'index']); ?></li>
+            <li><?= $this->Html->link('Novo Responsável',['controller'=>'Responsavel','action'=>'add']); ?></li>
+            <li><?= $this->Html->link('Listagem de Responsáveis',['controller'=>'Responsavel','action'=>'index']); ?></li>
           </ul>
         </li>
 

@@ -6,9 +6,7 @@ use Cake\ORM\Entity;
 /**
  * Presenca Entity
  *
- * @property int $id
- * @property int $matricula_id
- * @property int $turma_id
+ * @property int $matriculado_id
  * @property \Cake\I18n\FrozenDate $data_aula
  * @property bool $presente
  * @property \Cake\I18n\FrozenTime $data_criacao
@@ -30,9 +28,6 @@ class Presenca extends Entity
      * @var array
      */
     protected $_accessible = [
-        'matricula_id' => true,
-        'turma_id' => true,
-        'data_aula' => true,
         'presente' => true,
         'data_criacao' => true,
         'data_modificacao' => true,

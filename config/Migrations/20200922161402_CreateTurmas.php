@@ -3,7 +3,7 @@ use Migrations\AbstractMigration;
 use Phinx\Db\Adapter\MysqlAdapter;
 require_once 'MigrationUtils.php';
 
-define('DEVELOPMENT',true);
+define('DEVELOPMENT',false);
 
 class CreateTurmas extends AbstractMigration
 {

@@ -3,9 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Matricula $matricula
  */
-
 $this->layout = 'creche/layout_creche'
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -30,9 +28,10 @@ $this->layout = 'creche/layout_creche'
     <fieldset>
         <legend><?= __('Edit Matricula') ?></legend>
         <?php
-            echo $this->Form->control('matricula_ativa');
             echo $this->Form->control('aluno_id', ['options' => $alunos]);
-            echo $this->Form->control('ano_matricula');
+            echo $this->Form->control('tipo_vaga');
+            echo $this->Form->control('data_matricula');
+            echo $this->Form->control('matricula_ativa');
             echo $this->Form->control('data_criacao');
             echo $this->Form->control('data_modificacao');
             echo $this->Form->control('data_delecao', ['empty' => true]);

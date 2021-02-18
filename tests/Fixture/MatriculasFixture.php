@@ -16,9 +16,10 @@ class MatriculasFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'matricula_ativa' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'aluno_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'ano_matricula' => ['type' => 'integer', 'length' => 4, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'tipo_vaga' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'data_matricula' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'matricula_ativa' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'data_criacao' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'data_modificacao' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'data_delecao' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
@@ -45,12 +46,13 @@ class MatriculasFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'matricula_ativa' => 1,
                 'aluno_id' => 1,
-                'ano_matricula' => 1,
-                'data_criacao' => '2020-10-14 23:32:20',
-                'data_modificacao' => '2020-10-14 23:32:20',
-                'data_delecao' => '2020-10-14 23:32:20'
+                'tipo_vaga' => 'Lorem ipsum dolor sit amet',
+                'data_matricula' => '2020-11-28',
+                'matricula_ativa' => 1,
+                'data_criacao' => '2020-11-28 20:07:43',
+                'data_modificacao' => '2020-11-28 20:07:43',
+                'data_delecao' => '2020-11-28 20:07:43'
             ],
         ];
         parent::init();
