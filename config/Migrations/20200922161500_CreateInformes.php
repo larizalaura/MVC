@@ -21,7 +21,6 @@ class CreateInformes extends AbstractMigration
         ->addForeignKey('responsavel_id', 'usuarios', 'id', [])
         ->addForeignKey('funcionario_id', 'usuarios', 'id', [])
         ->create();
-
         $informe_arquivos = $this->table('informes_arquivos');
         $informe_arquivos
         ->addColumn('nome', 'string', ['limit'=> 45])
@@ -32,12 +31,10 @@ class CreateInformes extends AbstractMigration
         ->addColumn('data_delecao','datetime',['null'=>true])
         ->addForeignKey('informe_id', 'informes', 'id', [])
         ->create();
-       
     }
 
     public function down()
     {
-
         if(DEVELOPMENT){
             $tableNames = ['informes', 'informes_arquivos'];
             $util = new MigrationUtils();
@@ -46,6 +43,5 @@ class CreateInformes extends AbstractMigration
             print("Nao eh possivel deletar as tabelas arquivos. DEVELOPMENT: false");
             throw new Exception("Impossivel Reversao");
         }
-    
     }
 }

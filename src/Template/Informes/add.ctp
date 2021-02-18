@@ -10,6 +10,7 @@
   <?= $this->Html->script('/vendor/almasaeed2010/adminlte/bower_components/inputmask/dist/inputmask/inputmask.js') ?>
   <?= $this->Html->script('/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js') ?>
   <?= $this->Html->script('/bower_components/jquery-ui-1.12.1.custom/jquery-ui.min.js') ?>
+  <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.min.js') ?>
 <?php $this->end(); ?>
 <?php $this->start('css'); ?>
   <?= $this->Html->css('/bower_components/select2/dist/css/select2.min.css') ?>
@@ -19,12 +20,15 @@
 <?php $this->end(); ?>
 
 <?php $this->start('script'); ?>   
+  $(".filestyle").filestyle({
+    text: "corno",
+    btnClass: "btn-primary"
+  });
 
   $(".datemask").inputmask({
     alias: "datetime",
     inputFormat: "dd/mm/yyyy"
   });
-
 
   $('.datepicker').datepicker({
     dateFormat: 'dd/mm/yy',
@@ -37,7 +41,7 @@
     prevText: 'Anterior'
   });
   
-/*
+
   $('#funcionario-id').select2({
     theme:'bootstrap',
     placeholder: "Seleciona o funcionario"
@@ -47,82 +51,67 @@
     theme:'bootstrap',
     placeholder: "Seleciona o responsavel"
   });
-*/
-
-  $('#unidade-outra-destinataria-div').hide();
-  $("#outra-unidade").on('ifChecked',function(event){
-    $('#unidade-outra-destinataria-div').show();
-    $('#unidade-destinataria-div').hide();
-  });
-  $("#outra-unidade").on('ifUnchecked',function(event){
-    $('#unidade-outra-destinataria-div').hide();
-    $('#unidade-destinataria-div').show();
-  });
-
 <?php $this->end(); ?>   
 
 <?php $this->layout = 'creche/layout_creche' ?>
 <?php $this->assign('title','Novo Informe') ?>
 
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Informes'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Informes Arquivos'), ['controller' => 'InformesArquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Informes Arquivo'), ['controller' => 'InformesArquivos', 'action' => 'add']) ?></li>
-    </ul>
-</nav> -->
+<div class="informes form large-9 medium-8 columns content">
 
-<!-- <div class="informes form large-9 medium-8 columns content"> -->
-  <?= $this->Form->create($informe) ?>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active heading"><?= __('Actions') ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('Lista de Informes'), ['action' => 'index']) ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('Lista de Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+      <li class="breadcrumb-item active"><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+    </ol>
+  </nav>
+
+  <?= $this->Form->create($informe, array('enctype' => 'multipart/form-data')) ?>
 
     <div class="panel panel-default">
       <div class="panel-body">
-              <fieldset>
-                  <div class="col-md-6">
-                    <?= $this->Form->control('responsavel_id', [
-                      'options' => $responsaveis, 
-                      'label'=> '',
-                      'prepend'=>'<span>De</span>'
-                      ]);?>
-                  </div>
+        <fieldset>
+          <div class="col-md-6">
+            <?= $this->Form->control('responsavel_id', [
+              'options' => $responsaveis, 
+              'label'=> 'Responsável',
+              ]);?>
+          </div>
 
-                  <div class="col-md-6">
-                    <?= $this->Form->control('funcionario_id', [
-                      'options' => $funcionarios,
-                      'label'=> '',
-                      'prepend'=>'<span>para</span>'
-                      ]);?>
-                  </div>
-                 
-              </fieldset>
+          <div class="col-md-6">
+            <?= $this->Form->control('funcionario_id', [
+              'options' => $funcionarios,
+              'label'=> 'Funcionário',
+              ]);?>
+          </div>
+            
+        </fieldset>
+        <fieldset>
+          <div class="col-md-12">
+            <?= $this->Form->control('titulo', [
+              'placeholder' => 'Informe o titulo do informe',
+              'label'=> 'Assunto',
+              ]); ?>
+          </div>
 
-              <fieldset>
-                  <!-- <legend><?= __('Conteúdo') ?></legend> -->
-                  <div class="col-md-12">
-                    <?= $this->Form->control('titulo', [
-                      'placeholder' => 'Informe o titulo do informe',
-                      'label'=> '',
-                      'prepend'=>'<span>Assunto</span>'
-                      ]); ?>
-                  </div>
+          <div class="col-md-12 form-group">
+            <?= $this->Form->textarea('corpo',[
+              'placeholder' => 'Insira aqui o corpo da mensagem',
+              'label'=> '',
+            ]); ?>
+          </div>
+        </fieldset>
+        
+        <div class="col-md-12 form-group">
+          <?= $this->Form->control('informes_arquivos.informes_arquivos'); ?>
+        </div>
 
-                  <div class="col-md-12 form-group">
-                    <?= $this->Form->textarea('corpo',[
-                      'placeholder' => 'Insira aqui o corpo da mensagem',
-                      'label'=> '',
-                    ]); ?>
-                  </div>
-              </fieldset>
-
-              <div class="col-md-12">
-                <?= $this->Form->button(__('Enviar')) ?>
-              </div>
+        <div class="col-md-12">
+          <?= $this->Form->button(__('Enviar')) ?>
+        </div>
 
       </div>
     </div>
-  </div>
   <?= $this->Form->end() ?>
-<!-- </div> -->
+</div>

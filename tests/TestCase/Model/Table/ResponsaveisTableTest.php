@@ -24,7 +24,9 @@ class ResponsaveisTableTest extends TestCase
      */
     public $fixtures = [
         'app.Responsaveis',
-        'app.Usuarios'
+        'app.Enderecos',
+        'app.Alunos',
+        'app.Telefones'
     ];
 
     /**
