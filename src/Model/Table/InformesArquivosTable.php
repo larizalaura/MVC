@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Exception;
 
 /**
  * InformesArquivos Model
@@ -36,6 +37,13 @@ class InformesArquivosTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        // $this->addBehavior('Upload', [
+        //     'events' => [
+        //         'arquivo_name' => 'nome',
+        //         'diretorio' => 'upload'
+        //     ]
+        // ]);
+
         $this->belongsTo('Informes', [
             'foreignKey' => 'informe_id',
             'joinType' => 'INNER'
@@ -58,21 +66,21 @@ class InformesArquivosTable extends Table
             ->scalar('nome')
             ->maxLength('nome', 45)
             ->requirePresence('nome', 'create')
-            ->notEmptyString('nome');
+            /* ->notEmptyString('nome')*/;
 
         $validator
             ->scalar('extensao')
             ->maxLength('extensao', 4)
             ->requirePresence('extensao', 'create')
-            ->notEmptyString('extensao');
+            /*>notEmptyString('extensao')*/;
 
         $validator
             ->dateTime('data_criacao')
-            ->notEmptyDateTime('data_criacao');
+            /*->notEmptyDateTime('data_criacao')*/;
 
         $validator
             ->dateTime('data_modificacao')
-            ->notEmptyDateTime('data_modificacao');
+            /*->notEmptyDateTime('data_modificacao')*/;
 
         $validator
             ->dateTime('data_delecao')

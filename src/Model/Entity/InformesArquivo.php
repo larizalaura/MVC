@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * InformesArquivo Entity
@@ -36,4 +37,14 @@ class InformesArquivo extends Entity
         'data_delecao' => true,
         'informe' => true
     ];
+
+    public function  _getInformesArquivo() {
+        $Informes = TableRegistry::get('Informes');
+
+        $informe = $Informes->find()
+                         ->contain(['Informes'])
+                         ->where(['informes.id'=>$this->informe_id])
+                         ->first();
+        return $informe;
+    }
 }

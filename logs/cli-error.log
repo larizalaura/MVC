@@ -781,10 +781,24 @@ Stack Trace:
 #19 {main}
 
 
+<<<<<<< HEAD
 2020-11-28 20:01:54 Error: [RuntimeException] Unknown command `cake controller`. Run `cake --help` to get the list of valid commands. in /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 346
 Stack Trace:
 #0 /var/www/html/MVC/vendor/cakephp/cakephp/src/Console/CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'controller')
 #1 /var/www/html/MVC/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+=======
+2020-11-24 22:47:02 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in C:\xampp\htdocs\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 346
+Stack Trace:
+#0 C:\xampp\htdocs\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration')
+#1 C:\xampp\htdocs\MVC\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2020-12-01 03:19:37 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in C:\xampp\htdocs\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 346
+Stack Trace:
+#0 C:\xampp\htdocs\MVC\vendor\cakephp\cakephp\src\Console\CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration')
+#1 C:\xampp\htdocs\MVC\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+>>>>>>> 54b33a899837476d8d6b27813cd983f960d7b848
 #2 {main}
 
 

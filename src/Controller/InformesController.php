@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use Cake\Collection\Collection;
+
 use App\Controller\AppController;
 
 /**
@@ -20,7 +22,7 @@ class InformesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Usuarios']
+            'contain' => ['FuncionariosUsuarios', 'ResponsaveisUsuarios']
         ];
         $informes = $this->paginate($this->Informes);
 
@@ -37,7 +39,7 @@ class InformesController extends AppController
     public function view($id = null)
     {
         $informe = $this->Informes->get($id, [
-            'contain' => ['Usuarios', 'InformesArquivos']
+            'contain' => ['FuncionariosUsuarios', 'ResponsaveisUsuarios', 'InformesArquivos']
         ]);
 
         $this->set('informe', $informe);
@@ -51,17 +53,53 @@ class InformesController extends AppController
     public function add()
     {
         $informe = $this->Informes->newEntity();
+        
         if ($this->request->is('post')) {
-            $informe = $this->Informes->patchEntity($informe, $this->request->getData());
+            $informe = $this->Informes->patchEntity($informe, $this->request->getData(), [
+                'associated' => [ 'InformesArquivos']
+            ]);
+            
+            // print_r($this->request->data['informes_arquivos']['informes_arquivos']);die();
             if ($this->Informes->save($informe)) {
+                    
+                $informesArquivos = $this->Informes->InformesArquivos->newEntity();
+                $informesArquivos->nome = $this->request->data['informes_arquivos']['informes_arquivos'];
+                $this->Informes->InformesArquivos->link($informe, [$informesArquivos]);
+
                 $this->Flash->success(__('The informe has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The informe could not be saved. Please, try again.'));
         }
-        $usuarios = $this->Informes->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('informe', 'usuarios'));
+
+        $responsaveis = $this->obterResponsaveis();
+
+        $funcionarios = $this->obterFuncionarios();
+
+        $this->set(compact('informe', 'responsaveis', 'funcionarios'));
+    }
+
+    private function obterResponsaveis()
+    {
+        $responsaveis = $this->Informes->ResponsaveisUsuarios->find('ownedByResponsaveis', [])->map(function ($value, $key) {
+            return [
+                'value' => $value->id,
+                'text' => $value->nome,
+            ];
+        });
+        return $responsaveis;
+    }
+
+    private function obterFuncionarios()
+    {
+        $funcionarios = $this->Informes->FuncionariosUsuarios->find('ownedByFuncionarios', [])->map(function ($value, $key) {
+            return [
+                'value' => $value->id,
+                'text' => $value->nome,
+            ];
+        });
+        return $funcionarios;
     }
 
     /**
@@ -85,8 +123,12 @@ class InformesController extends AppController
             }
             $this->Flash->error(__('The informe could not be saved. Please, try again.'));
         }
-        $usuarios = $this->Informes->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('informe', 'usuarios'));
+        
+        $responsaveis = $this->obterResponsaveis();
+
+        $funcionarios = $this->obterFuncionarios();
+
+        $this->set(compact('informe', 'responsaveis', 'funcionarios'));
     }
 
     /**
